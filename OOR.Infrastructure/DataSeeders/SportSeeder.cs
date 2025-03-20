@@ -1,10 +1,13 @@
 ﻿using OOR.Domain.Entities;
+using OOR.Infrastructure.Context;
 
 namespace OOR.Infrastructure.DataSeeders
 {
     public static class DataSeeder
     {
-        public static void SeedSports(OORDbContext context)
+
+
+        public static void SeedSports(OddsContext context)
         {
             // Define the list of sports you want to insert.
             var sportsToSeed = new List<Sport>

@@ -13,13 +13,15 @@ public partial class League
 
     public int? SportId { get; set; }
 
-    public int? CountryId { get; set; }
+    public int? RegionId { get; set; }
 
     public int? Level { get; set; }
 
     public virtual ICollection<Conference> Conferences { get; set; } = new List<Conference>();
 
-    public virtual Country? Country { get; set; }
+    public virtual ICollection<MarketLeagueSportsbook> MarketLeagueSportsbooks { get; set; } = new List<MarketLeagueSportsbook>();
+
+    public virtual Region? Region { get; set; }
 
     public virtual Sport? Sport { get; set; }
 

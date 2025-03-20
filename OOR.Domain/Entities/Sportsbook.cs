@@ -13,13 +13,13 @@ public partial class Sportsbook
 
     public string? Website { get; set; }
 
-    public int? CountryId { get; set; }
-
-    public virtual Country? Country { get; set; }
+    public bool? Active { get; set; }
 
     public virtual ICollection<FuturesOdd> FuturesOdds { get; set; } = new List<FuturesOdd>();
 
     public virtual ICollection<HistoricalOdd> HistoricalOdds { get; set; } = new List<HistoricalOdd>();
+
+    public virtual ICollection<MarketLeagueSportsbook> MarketLeagueSportsbooks { get; set; } = new List<MarketLeagueSportsbook>();
 
     public virtual ICollection<Odd> Odds { get; set; } = new List<Odd>();
 }

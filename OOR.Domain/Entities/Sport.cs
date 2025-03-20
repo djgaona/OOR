@@ -11,8 +11,6 @@ public partial class Sport
 
     public string? Name { get; set; }
 
-    public string? Description { get; set; }
-
     public virtual ICollection<League> Leagues { get; set; } = new List<League>();
 
     public virtual ICollection<Market> Markets { get; set; } = new List<Market>();
