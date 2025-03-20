@@ -1,0 +1,16 @@
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\bin\Debug\net9.0-windows\OOR.ManualReader.exe
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\bin\Debug\net9.0-windows\OOR.ManualReader.deps.json
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\bin\Debug\net9.0-windows\OOR.ManualReader.runtimeconfig.json
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\bin\Debug\net9.0-windows\OOR.ManualReader.dll
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\bin\Debug\net9.0-windows\OOR.ManualReader.pdb
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.Form1.resources
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.csproj.GenerateResource.cache
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.AssemblyInfoInputs.cache
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.AssemblyInfo.cs
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.csproj.CoreCompileInputs.cache
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.dll
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\refint\OOR.ManualReader.dll
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.pdb
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\OOR.ManualReader.genruntimeconfig.cache
+C:\Users\Javier\Documents\OpticOddsReader\OOR.ManualReader\obj\Debug\net9.0-windows\ref\OOR.ManualReader.dll

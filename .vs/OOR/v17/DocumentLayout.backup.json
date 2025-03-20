@@ -1,0 +1,191 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.app\\countrytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|solutionrelative:oor.app\\countrytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|solutionrelative:oor.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.manualreader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|solutionrelative:oor.manualreader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.infrastructure\\persistence\\oordbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|solutionrelative:oor.infrastructure\\persistence\\oordbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.domain\\entities\\futuresodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\futuresodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.domain\\entities\\graderodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\graderodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.domain\\oor.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\oor.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.manualreader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|solutionrelative:oor.manualreader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|solutionrelative:oor.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CountryTest.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.App\\CountryTest.cs",
+              "RelativeDocumentMoniker": "OOR.App\\CountryTest.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.App\\CountryTest.cs",
+              "RelativeToolTip": "OOR.App\\CountryTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T03:02:01.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\Program.cs",
+              "RelativeDocumentMoniker": "OOR.ManualReader\\Program.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\Program.cs",
+              "RelativeToolTip": "OOR.ManualReader\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T03:00:09.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OORDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Infrastructure\\Persistence\\OORDbContext.cs",
+              "RelativeDocumentMoniker": "OOR.Infrastructure\\Persistence\\OORDbContext.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Infrastructure\\Persistence\\OORDbContext.cs",
+              "RelativeToolTip": "OOR.Infrastructure\\Persistence\\OORDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T02:59:53.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FuturesOdd.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Entities\\FuturesOdd.cs",
+              "RelativeDocumentMoniker": "OOR.Domain\\Entities\\FuturesOdd.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Entities\\FuturesOdd.cs",
+              "RelativeToolTip": "OOR.Domain\\Entities\\FuturesOdd.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T02:57:57.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GraderOdd.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Entities\\GraderOdd.cs",
+              "RelativeDocumentMoniker": "OOR.Domain\\Entities\\GraderOdd.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Entities\\GraderOdd.cs",
+              "RelativeToolTip": "OOR.Domain\\Entities\\GraderOdd.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T02:57:48.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\Form1.cs",
+              "RelativeDocumentMoniker": "OOR.ManualReader\\Form1.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\Form1.cs [Design]",
+              "RelativeToolTip": "OOR.ManualReader\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T00:03:52.247Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.App\\Program.cs",
+              "RelativeDocumentMoniker": "OOR.App\\Program.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.App\\Program.cs",
+              "RelativeToolTip": "OOR.App\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T23:58:35.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Application\\Class1.cs",
+              "RelativeDocumentMoniker": "OOR.Application\\Class1.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Application\\Class1.cs",
+              "RelativeToolTip": "OOR.Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T23:56:50.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OOR.Domain.csproj",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\OOR.Domain.csproj",
+              "RelativeDocumentMoniker": "OOR.Domain\\OOR.Domain.csproj",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\OOR.Domain.csproj",
+              "RelativeToolTip": "OOR.Domain\\OOR.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-11T23:52:39.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "OOR.Domain\\Class1.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Class1.cs",
+              "RelativeToolTip": "OOR.Domain\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T23:52:32.855Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
