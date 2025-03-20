@@ -1,46 +1,78 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\",
+  "WorkspaceRootPath": "C:\\Users\\Javier\\Documents\\OOR\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.app\\countrytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|solutionrelative:oor.app\\countrytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|c:\\users\\javier\\documents\\oor\\oor.infrastructure\\domain\\entities\\sport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|solutionrelative:oor.infrastructure\\domain\\entities\\sport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|solutionrelative:oor.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Domain\\Entities\\OddsContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OOR.Infrastructure\\Domain\\Entities\\OddsContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.manualreader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|solutionrelative:oor.manualreader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|c:\\users\\javier\\documents\\oor\\oor.infrastructure\\services\\opticoddsapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|solutionrelative:oor.infrastructure\\services\\opticoddsapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.infrastructure\\persistence\\oordbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|solutionrelative:oor.infrastructure\\persistence\\oordbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|c:\\users\\javier\\documents\\oor\\oor.application\\interfaces\\iopticoddsapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|solutionrelative:oor.application\\interfaces\\iopticoddsapiclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.domain\\entities\\futuresodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\futuresodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|c:\\users\\javier\\documents\\oor\\oor.application\\interfaces\\ileagueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|solutionrelative:oor.application\\interfaces\\ileagueservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.domain\\entities\\graderodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\graderodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.domain\\oor.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\oor.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.manualreader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|solutionrelative:oor.manualreader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|c:\\users\\javier\\documents\\oor\\oor.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A198CC7D-83D5-4E0E-B238-B6563929F219}|OOR.Application\\OOR.Application.csproj|solutionrelative:oor.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\opticoddsreader\\oor.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|c:\\users\\javier\\documents\\oor\\oor.infrastructure\\oor.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|solutionrelative:oor.infrastructure\\oor.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|c:\\users\\javier\\documents\\oor\\oor.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{456B7C96-C18C-4369-82FA-0BBCA76C2085}|OOR.App\\OOR.App.csproj|solutionrelative:oor.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|c:\\users\\javier\\documents\\oor\\oor.infrastructure\\dataseeders\\sportseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|solutionrelative:oor.infrastructure\\dataseeders\\sportseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|c:\\users\\javier\\documents\\oor\\oor.infrastructure\\persistence\\oordbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD5F3D55-6B8C-4D99-B869-D211CCF004EB}|OOR.Infrastructure\\OOR.Infrastructure.csproj|solutionrelative:oor.infrastructure\\persistence\\oordbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|c:\\users\\javier\\documents\\oor\\oor.manualreader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|solutionrelative:oor.manualreader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\oor\\oor.domain\\entities\\sport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\sport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\oor\\oor.domain\\entities\\baseballpitchingstat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\baseballpitchingstat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\oor\\oor.domain\\entities\\baseballbattingstat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\baseballbattingstat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\oor\\oor.domain\\entities\\futuresodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\futuresodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\oor\\oor.domain\\entities\\graderodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\entities\\graderodd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|c:\\users\\javier\\documents\\oor\\oor.domain\\oor.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8C3C0967-87DE-43E3-8A9E-7495A4063062}|OOR.Domain\\OOR.Domain.csproj|solutionrelative:oor.domain\\oor.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|C:\\Users\\Javier\\Documents\\OOR\\oor.manualreader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{097E6638-48AE-473D-AF3F-CA8112611246}|OOR.ManualReader\\OOR.ManualReader.csproj|solutionrelative:oor.manualreader\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,8 +82,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OpticOddsApiClient.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Services\\OpticOddsApiClient.cs",
+              "RelativeDocumentMoniker": "OOR.Infrastructure\\Services\\OpticOddsApiClient.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Services\\OpticOddsApiClient.cs",
+              "RelativeToolTip": "OOR.Infrastructure\\Services\\OpticOddsApiClient.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAqwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T03:56:15.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IOpticOddsApiClient.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Application\\Interfaces\\IOpticOddsApiClient.cs",
+              "RelativeDocumentMoniker": "OOR.Application\\Interfaces\\IOpticOddsApiClient.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Application\\Interfaces\\IOpticOddsApiClient.cs",
+              "RelativeToolTip": "OOR.Application\\Interfaces\\IOpticOddsApiClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T03:55:42.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ILeagueService.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Application\\Interfaces\\ILeagueService.cs",
+              "RelativeDocumentMoniker": "OOR.Application\\Interfaces\\ILeagueService.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Application\\Interfaces\\ILeagueService.cs",
+              "RelativeToolTip": "OOR.Application\\Interfaces\\ILeagueService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T03:41:37.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OOR.Infrastructure",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\OOR.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "OOR.Infrastructure\\OOR.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\OOR.Infrastructure.csproj",
+              "RelativeToolTip": "OOR.Infrastructure\\OOR.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-20T03:40:11.001Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -59,62 +143,114 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CountryTest.cs",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.App\\CountryTest.cs",
-              "RelativeDocumentMoniker": "OOR.App\\CountryTest.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.App\\CountryTest.cs",
-              "RelativeToolTip": "OOR.App\\CountryTest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
+              "Title": "Sport.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Domain\\Entities\\Sport.cs",
+              "RelativeDocumentMoniker": "OOR.Infrastructure\\Domain\\Entities\\Sport.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Domain\\Entities\\Sport.cs",
+              "RelativeToolTip": "OOR.Infrastructure\\Domain\\Entities\\Sport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T03:02:01.95Z",
+              "WhenOpened": "2025-03-20T03:32:41.956Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
+              "Title": "Sport.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\Sport.cs",
+              "RelativeDocumentMoniker": "OOR.Domain\\Entities\\Sport.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\Sport.cs",
+              "RelativeToolTip": "OOR.Domain\\Entities\\Sport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T02:47:52.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BaseballPitchingStat.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\BaseballPitchingStat.cs",
+              "RelativeDocumentMoniker": "OOR.Domain\\Entities\\BaseballPitchingStat.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\BaseballPitchingStat.cs",
+              "RelativeToolTip": "OOR.Domain\\Entities\\BaseballPitchingStat.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T06:48:47.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.ManualReader\\Program.cs",
               "RelativeDocumentMoniker": "OOR.ManualReader\\Program.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\Program.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.ManualReader\\Program.cs",
               "RelativeToolTip": "OOR.ManualReader\\Program.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAiwBMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-21T03:00:09.665Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "OORDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Infrastructure\\Persistence\\OORDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Persistence\\OORDbContext.cs",
               "RelativeDocumentMoniker": "OOR.Infrastructure\\Persistence\\OORDbContext.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Infrastructure\\Persistence\\OORDbContext.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Persistence\\OORDbContext.cs",
               "RelativeToolTip": "OOR.Infrastructure\\Persistence\\OORDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANwEAAAAAAAAAAAIwO8EAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-21T02:59:53.964Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "OddsContext.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Domain\\Entities\\OddsContext.cs",
+              "RelativeDocumentMoniker": "OOR.Infrastructure\\Domain\\Entities\\OddsContext.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\Domain\\Entities\\OddsContext.cs",
+              "RelativeToolTip": "OOR.Infrastructure\\Domain\\Entities\\OddsContext.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAgwBcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T03:32:25.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SportSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\DataSeeders\\SportSeeder.cs",
+              "RelativeDocumentMoniker": "OOR.Infrastructure\\DataSeeders\\SportSeeder.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Infrastructure\\DataSeeders\\SportSeeder.cs",
+              "RelativeToolTip": "OOR.Infrastructure\\DataSeeders\\SportSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T03:25:37.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "FuturesOdd.cs",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Entities\\FuturesOdd.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\FuturesOdd.cs",
               "RelativeDocumentMoniker": "OOR.Domain\\Entities\\FuturesOdd.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Entities\\FuturesOdd.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\FuturesOdd.cs",
               "RelativeToolTip": "OOR.Domain\\Entities\\FuturesOdd.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAEBTwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-21T02:57:57.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 15,
               "Title": "GraderOdd.cs",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Entities\\GraderOdd.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\GraderOdd.cs",
               "RelativeDocumentMoniker": "OOR.Domain\\Entities\\GraderOdd.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Entities\\GraderOdd.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\GraderOdd.cs",
               "RelativeToolTip": "OOR.Domain\\Entities\\GraderOdd.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -123,11 +259,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Application\\Class1.cs",
+              "RelativeDocumentMoniker": "OOR.Application\\Class1.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Application\\Class1.cs",
+              "RelativeToolTip": "OOR.Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-11T23:56:50.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.ManualReader\\Form1.cs",
               "RelativeDocumentMoniker": "OOR.ManualReader\\Form1.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.ManualReader\\Form1.cs [Design]",
               "RelativeToolTip": "OOR.ManualReader\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-12T00:03:52.247Z",
@@ -135,53 +284,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.App\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.App\\Program.cs",
               "RelativeDocumentMoniker": "OOR.App\\Program.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.App\\Program.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.App\\Program.cs",
               "RelativeToolTip": "OOR.App\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-11T23:58:35.41Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Application\\Class1.cs",
-              "RelativeDocumentMoniker": "OOR.Application\\Class1.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Application\\Class1.cs",
-              "RelativeToolTip": "OOR.Application\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "BaseballBattingStat.cs",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\BaseballBattingStat.cs",
+              "RelativeDocumentMoniker": "OOR.Domain\\Entities\\BaseballBattingStat.cs",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\Entities\\BaseballBattingStat.cs",
+              "RelativeToolTip": "OOR.Domain\\Entities\\BaseballBattingStat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T23:56:50.979Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "OOR.Domain.csproj",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\OOR.Domain.csproj",
-              "RelativeDocumentMoniker": "OOR.Domain\\OOR.Domain.csproj",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\OOR.Domain.csproj",
-              "RelativeToolTip": "OOR.Domain\\OOR.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-02-11T23:52:39.015Z",
+              "WhenOpened": "2025-03-19T06:49:17.137Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Class1.cs",
-              "RelativeDocumentMoniker": "OOR.Domain\\Class1.cs",
-              "ToolTip": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.Domain\\Class1.cs",
-              "RelativeToolTip": "OOR.Domain\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T23:52:32.855Z"
+              "DocumentIndex": 16,
+              "Title": "OOR.Domain.csproj",
+              "DocumentMoniker": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\OOR.Domain.csproj",
+              "RelativeDocumentMoniker": "OOR.Domain\\OOR.Domain.csproj",
+              "ToolTip": "C:\\Users\\Javier\\Documents\\OOR\\OOR.Domain\\OOR.Domain.csproj*",
+              "RelativeToolTip": "OOR.Domain\\OOR.Domain.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-11T23:52:39.015Z",
+              "EditorCaption": ""
             }
           ]
         }

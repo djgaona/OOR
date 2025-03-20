@@ -1232,6 +1232,33 @@ public partial class OORDbContext : DbContext
             entity.Property(e => e.Temperature).HasColumnName("temperature");
         });
 
+        modelBuilder.Entity<Sport>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("sports_pkey");
+
+            entity.ToTable("sports");
+
+            entity.HasIndex(e => e.Code, "sports_code_key").IsUnique();
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Code)
+                .HasMaxLength(15)
+                .HasColumnName("code");
+            entity.Property(e => e.Description)
+                .HasMaxLength(255)
+                .HasColumnName("description");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .HasColumnName("name");
+
+            // Seed data for the three sports
+            entity.HasData(
+                new Sport { Id = 1, Code = "baseball", Name = "Baseball" },
+                new Sport { Id = 2, Code = "soccer", Name = "Soccer" },
+                new Sport { Id = 3, Code = "tennis", Name = "Tennis" }
+            );
+        });
+
         OnModelCreatingPartial(modelBuilder);
     }
 

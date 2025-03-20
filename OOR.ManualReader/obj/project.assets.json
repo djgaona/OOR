@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\OOR.ManualReader.csproj",
+      "projectUniqueName": "C:\\Users\\Javier\\Documents\\OOR\\OOR.ManualReader\\OOR.ManualReader.csproj",
       "projectName": "OOR.ManualReader",
-      "projectPath": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\OOR.ManualReader.csproj",
+      "projectPath": "C:\\Users\\Javier\\Documents\\OOR\\OOR.ManualReader\\OOR.ManualReader.csproj",
       "packagesPath": "C:\\Users\\Javier\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Javier\\Documents\\OpticOddsReader\\OOR.ManualReader\\obj\\",
+      "outputPath": "C:\\Users\\Javier\\Documents\\OOR\\OOR.ManualReader\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,7 +51,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0-windows7.0": {
@@ -75,7 +75,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
