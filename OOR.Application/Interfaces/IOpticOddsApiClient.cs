@@ -12,8 +12,38 @@ namespace OOR.Application.Interfaces
         Task<string> GetLeaguesForSportsRawAsync(IEnumerable<string> sportCodes);
 
         /// <summary>
+        /// Returns raw JSON for teams, filtered by sport codes.
+        /// </summary>
+        Task<string> GetTeamsForSportsRawAsync(IEnumerable<string> sportCodes);
+
+        /// <summary>
+        /// Returns raw JSON for players, filtered by sport codes.
+        /// </summary>
+        Task<string> GetPlayersForSportsRawAsync(IEnumerable<string> sportCodes);
+
+        /// <summary>
+        /// Returns raw JSON for fixtures, filtered by sport codes.
+        /// </summary>
+        Task<string> GetFixturesForSportsRawAsync(IEnumerable<string> sportCodes);
+
+        /// <summary>
+        /// Returns raw JSON for tournaments, filtered by sport codes.
+        /// </summary>
+        Task<string> GetTournamentsForSportsRawAsync(IEnumerable<string> sportCodes);
+
+        /// <summary>
+        /// Returns raw JSON for conferences, filtered by sport codes.
+        /// </summary>
+        Task<string> GetConferencesForSportsRawAsync(IEnumerable<string> sportCodes);
+
+        /// <summary>
+        /// Returns raw JSON for divisions, filtered by sport codes.
+        /// </summary>
+        Task<string> GetDivisionsForSportsRawAsync(IEnumerable<string> sportCodes);
+
+        /// <summary>
         /// Returns a list of Market objects (with SportCode set) for the given sport codes.
-        /// Each Market's code, name, description are populated from the API.
+        /// Each Market's code, name, and description are populated from the API.
         /// </summary>
         Task<IEnumerable<Market>?> GetMarketsForSportsAsync(IEnumerable<string> sportCodes);
 

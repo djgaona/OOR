@@ -33,11 +33,64 @@ namespace OOR.Infrastructure.Services
             return await response.Content.ReadAsStringAsync();
         }
 
+        public async Task<string> GetTeamsForSportsRawAsync(IEnumerable<string> sportCodes)
+        {
+            var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
+            var requestUrl = $"teams?{query}";
+            var response = await _httpClient.GetAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetPlayersForSportsRawAsync(IEnumerable<string> sportCodes)
+        {
+            var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
+            var requestUrl = $"players?{query}";
+            var response = await _httpClient.GetAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        // New Methods
+
+        public async Task<string> GetFixturesForSportsRawAsync(IEnumerable<string> sportCodes)
+        {
+            var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
+            var requestUrl = $"fixtures?{query}";
+            var response = await _httpClient.GetAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetTournamentsForSportsRawAsync(IEnumerable<string> sportCodes)
+        {
+            var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
+            var requestUrl = $"tournaments?{query}";
+            var response = await _httpClient.GetAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetConferencesForSportsRawAsync(IEnumerable<string> sportCodes)
+        {
+            var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
+            var requestUrl = $"conferences?{query}";
+            var response = await _httpClient.GetAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetDivisionsForSportsRawAsync(IEnumerable<string> sportCodes)
+        {
+            var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
+            var requestUrl = $"divisions?{query}";
+            var response = await _httpClient.GetAsync(requestUrl);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
         public async Task<IEnumerable<Market>?> GetMarketsForSportsAsync(IEnumerable<string> sportCodes)
         {
-            // Some APIs support multiple sports in one call, but if not, you can loop sport by sport.
-            // For demonstration, let's assume the API supports multiple "sport" parameters.
-
             var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
             var requestUrl = $"markets?{query}";
 
@@ -157,7 +210,7 @@ namespace OOR.Infrastructure.Services
                         Code = item["id"]?.ToString(),
                         Name = item["name"]?.ToString(),
                         Active = item["is_active"]?.ToObject<bool?>()
-                        // etc.
+                        // Map additional properties as needed.
                     };
                     sportsbooks.Add(sb);
                 }
