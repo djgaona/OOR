@@ -21,7 +21,7 @@ namespace OOR.Infrastructure.Services
             _httpClient.BaseAddress = new Uri("https://api.opticodds.com/api/v3/");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.DefaultRequestHeaders.Add("X-Api-Key", "3f4990f0-12bc-4951-b2df-2bf75136cf3d");
+            _httpClient.DefaultRequestHeaders.Add("X-Api-Key", "1183340c-d160-4f77-9447-90416c7ff363");
         }
 
         public async Task<string> GetLeaguesForSportsRawAsync(IEnumerable<string> sportCodes)
@@ -32,7 +32,7 @@ namespace OOR.Infrastructure.Services
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
-
+         
         public async Task<string> GetTeamsForSportsRawAsync(IEnumerable<string> sportCodes)
         {
             var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
@@ -91,48 +91,35 @@ namespace OOR.Infrastructure.Services
 
         public async Task<IEnumerable<Market>?> GetMarketsForSportsAsync(IEnumerable<string> sportCodes)
         {
-            var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
-            var requestUrl = $"markets?{query}";
+            var allMarkets = new List<Market>();
 
-            var response = await _httpClient.GetAsync(requestUrl);
-            response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync();
-
-            var token = JToken.Parse(json);
-            if (token.Type == JTokenType.Object && token["data"] is JArray dataArray)
+            foreach (var sportCode in sportCodes)
             {
-                var markets = new List<Market>();
-                foreach (var item in dataArray)
+                var requestUrl = $"markets?sport={sportCode}";
+                var response = await _httpClient.GetAsync(requestUrl);
+                response.EnsureSuccessStatusCode();
+                var json = await response.Content.ReadAsStringAsync();
+
+                var token = JToken.Parse(json);
+                if (token.Type == JTokenType.Object && token["data"] is JArray dataArray)
                 {
-                    var market = new Market
+                    foreach (var item in dataArray)
                     {
-                        Code = item["id"]?.ToString(),
-                        Name = item["name"]?.ToString(),
-                        Description = item["description"]?.ToString()
-                    };
-
-                    // Nested "sports" array
-                    var sportsArray = item["sports"] as JArray;
-                    if (sportsArray != null && sportsArray.Any())
-                    {
-                        var firstSport = sportsArray.First;
-                        string sportCodeFromApi = firstSport["id"]?.ToString();
-                        if (!string.IsNullOrWhiteSpace(sportCodeFromApi))
+                        var market = new Market
                         {
-                            // We'll store the SportCode in the Market's [NotMapped] property
-                            market.SportCode = sportCodeFromApi;
-                        }
+                            Code = item["id"]?.ToString(),
+                            Name = item["name"]?.ToString(),
+                            Description = item["description"]?.ToString(),
+                            SportCode = sportCode // <-- use current sportCode
+                        };
+                        allMarkets.Add(market);
                     }
-                    markets.Add(market);
                 }
-                return markets;
             }
-            else
-            {
-                // Fallback
-                return JsonConvert.DeserializeObject<IEnumerable<Market>>(json);
-            }
+
+            return allMarkets;
         }
+
 
         public async Task<IEnumerable<MarketLeagueSportsbookDto>> GetMarketLeagueSportsbookRelationshipsAsync(IEnumerable<string> sportCodes)
         {

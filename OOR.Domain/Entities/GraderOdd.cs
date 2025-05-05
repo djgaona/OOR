@@ -6,11 +6,9 @@ namespace OOR.Domain.Entities;
 public partial class GraderOdd
 {
     public int FixtureId { get; set; }
-
+    public int SelectionId { get; set; }
     public string? AwayTeamDisplay { get; set; }
-
     public string? HomeTeamDisplay { get; set; }
-
     public int? StatusId { get; set; }
 
     public int? AwayScore { get; set; }
@@ -21,7 +19,7 @@ public partial class GraderOdd
 
     public string? Result { get; set; }
 
-    public virtual Fixture Fixture { get; set; } = null!;
-
+    public virtual Fixture? Fixture { get; set; }
+    public virtual Selection? Selection { get; set; }
     public virtual Status? Status { get; set; }
 }
