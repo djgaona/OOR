@@ -11,9 +11,9 @@ public partial class Division
 
     public string? Name { get; set; }
 
-    public int? ConferenceId { get; set; }
+    public int? LeagueId { get; set; }
 
-    public virtual Conference? Conference { get; set; }
+    public virtual League? League { get; set; }
 
     public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
 }

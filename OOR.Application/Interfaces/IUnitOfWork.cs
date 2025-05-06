@@ -11,11 +11,9 @@ namespace OOR.Application.Interfaces
             IRepository<BaseballBattingStat> BaseballBattingStats { get; }
             IRepository<BaseballPitchingStat> BaseballPitchingStats { get; }
             IRepository<Broadcast> Broadcasts { get; }
-            IRepository<City> Cities { get; }
             IRepository<Conference> Conferences { get; }
             IRepository<Division> Divisions { get; }
             IRepository<Fixture> Fixtures { get; }
-            IRepository<FixtureSource> FixtureSources { get; }
             IRepository<Future> Futures { get; }
             IRepository<FuturesOdd> FuturesOdds { get; }
             IRepository<GraderOdd> GraderOdds { get; }
@@ -24,7 +22,6 @@ namespace OOR.Application.Interfaces
             IRepository<League> Leagues { get; }
             IRepository<LineType> LineTypes { get; }
             IRepository<Market> Markets { get; }
-            IRepository<MarketLeagueSportsbook> MarketLeagueSportsbooks { get; }
             IRepository<Odd> Odds { get; }
             IRepository<OddsJson> OddsJsons { get; }
             IRepository<Period> Periods { get; }
@@ -40,8 +37,7 @@ namespace OOR.Application.Interfaces
             IRepository<Sportsbook> Sportsbooks { get; }
             IRepository<Status> Statuses { get; }
             IRepository<Team> Teams { get; }
-            IRepository<TeamFixtureDetail> TeamFixtureDetails { get; }
-            IRepository<TeamsLeague> TeamsLeagues { get; }
+            IRepository<FixturePeriodScore> FixturePeriodScores { get; }
             IRepository<TennisPlayerStat> TennisPlayerStats { get; }
             IRepository<Tournament> Tournaments { get; }
             IRepository<TournamentStage> TournamentStages { get; }

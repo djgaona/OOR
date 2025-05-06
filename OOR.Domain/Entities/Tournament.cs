@@ -15,11 +15,11 @@ public partial class Tournament
 
     public DateOnly? EndDate { get; set; }
 
-    public int? LeagueId { get; set; }
+    public int? SportId { get; set; }
 
     public virtual ICollection<Fixture> Fixtures { get; set; } = new List<Fixture>();
 
     public virtual ICollection<Future> Futures { get; set; } = new List<Future>();
 
-    public virtual League? League { get; set; }
+    public virtual Sport? Sport { get; set; }
 }

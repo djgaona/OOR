@@ -13,11 +13,9 @@ public partial class OddsContext : DbContext
     public virtual DbSet<BaseballBattingStat> BaseballBattingStats { get; set; }
     public virtual DbSet<BaseballPitchingStat> BaseballPitchingStats { get; set; }
     public virtual DbSet<Broadcast> Broadcasts { get; set; }
-    public virtual DbSet<City> Citys { get; set; }
     public virtual DbSet<Conference> Conferences { get; set; }
     public virtual DbSet<Division> Divisions { get; set; }
     public virtual DbSet<Fixture> Fixtures { get; set; }
-    public virtual DbSet<FixtureSource> FixtureSources { get; set; }
     public virtual DbSet<Future> Futures { get; set; }
     public virtual DbSet<FuturesOdd> FuturesOdds { get; set; }
     public virtual DbSet<GraderOdd> GraderOdds { get; set; }
@@ -26,7 +24,6 @@ public partial class OddsContext : DbContext
     public virtual DbSet<League> Leagues { get; set; }
     public virtual DbSet<LineType> LineTypes { get; set; }
     public virtual DbSet<Market> Markets { get; set; }
-    public virtual DbSet<MarketLeagueSportsbook> MarketLeagueSportsbooks { get; set; }
     public virtual DbSet<Odd> Odds { get; set; }
     public virtual DbSet<OddsJson> OddsJsons { get; set; }
     public virtual DbSet<Period> Periods { get; set; }
@@ -42,8 +39,7 @@ public partial class OddsContext : DbContext
     public virtual DbSet<Sportsbook> Sportsbooks { get; set; }
     public virtual DbSet<Status> Statuss { get; set; }
     public virtual DbSet<Team> Teams { get; set; }
-    public virtual DbSet<TeamFixtureDetail> TeamFixtureDetails { get; set; }
-    public virtual DbSet<TeamsLeague> TeamsLeagues { get; set; }
+    public virtual DbSet<FixturePeriodScore> FixturePeriodScores { get; set; }
     public virtual DbSet<TennisPlayerStat> TennisPlayerStats { get; set; }
     public virtual DbSet<Tournament> Tournaments { get; set; }
     public virtual DbSet<TournamentStage> TournamentStages { get; set; }
@@ -77,16 +73,7 @@ public partial class OddsContext : DbContext
             }
           
         });
-        modelBuilder.Entity<City>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-
-           
-            if (entity.Metadata.FindProperty("Name") != null)
-            {
-                entity.Property(e => e.Name).HasMaxLength(200);
-            }
-        });
+       
         modelBuilder.Entity<Conference>(entity =>
         {
             entity.HasKey(e => e.Id);
@@ -128,7 +115,7 @@ public partial class OddsContext : DbContext
             }
             
         });
-        modelBuilder.Entity<FixtureSource>(entity =>
+        modelBuilder.Entity<FixturePeriodScore>(entity =>
         {
             entity.HasKey(e => e.Id);
           
@@ -226,11 +213,7 @@ public partial class OddsContext : DbContext
                 entity.Property(e => e.Name).HasMaxLength(200);
             }
         });
-        modelBuilder.Entity<MarketLeagueSportsbook>(entity =>
-        {
-            entity.HasKey(e => new { e.MarketId, e.LeagueId,e.SportsbookId });
-
-        });
+      
         modelBuilder.Entity<Odd>(entity =>
         {
             entity.HasKey(e => e.Id);
@@ -399,18 +382,13 @@ public partial class OddsContext : DbContext
                 entity.Property(e => e.Name).HasMaxLength(200);
             }
         });
-        modelBuilder.Entity<TeamFixtureDetail>(entity =>
+        modelBuilder.Entity<FixturePeriodScore>(entity =>
         {
             entity.HasKey(e => e.Id);
 
            
         });
-        modelBuilder.Entity<TeamsLeague>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-
-           
-        });
+      
         modelBuilder.Entity<TennisPlayerStat>(entity =>
         {
             entity.HasKey(e => e.Id);
@@ -450,12 +428,7 @@ public partial class OddsContext : DbContext
         modelBuilder.Entity<Venue>(entity =>
         {
             entity.HasKey(e => e.Id);
-
-            if (entity.Metadata.FindProperty("Code") != null)
-            {
-                entity.Property(e => e.Code).HasMaxLength(50).IsRequired();
-                entity.HasIndex(e => e.Code).IsUnique();
-            }
+            
 
             if (entity.Metadata.FindProperty("Name") != null)
             {

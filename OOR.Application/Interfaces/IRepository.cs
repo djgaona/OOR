@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using OOR.Domain.Entities;
 
 namespace OOR.Application.Interfaces
@@ -11,5 +10,11 @@ namespace OOR.Application.Interfaces
         Task<IEnumerable<T>> GetAllAsync();
         Task AddAsync(T entity);
         Task<bool> ExistsAsync(string code);
+
+        IQueryable<T> Local { get; } // ✅ Add this line
+        Task<SeasonType?> GetByNameAsync(string typeName);
+        Task<SeasonType> AddAndReturnAsync(SeasonType seasonType);
+        Task<Season?> GetByYearAndTypeAsync(int year, int id);
+        Task<Venue?> GetByNameAndLocationAsync(string? name, string? location);
     }
 }

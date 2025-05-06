@@ -20,7 +20,7 @@ namespace OOR
                 {
                     // Register your DbContext
                     services.AddDbContext<OddsContext>(options =>
-                        options.UseNpgsql("Host=localhost;Database=odds;Username=postgres;Password=123"));
+                        options.UseNpgsql("Host=localhost;Database=odds;Username=postgres;Password=123;MaxPoolSize = 200"));
 
                     // Register HttpClient for OpticOdds API
                     services.AddHttpClient<IOpticOddsApiClient, HttpClientOpticOddsApiClient>(client =>
@@ -45,7 +45,7 @@ namespace OOR
 
             // Run the seeding
             var seeder = services.GetRequiredService<SeedDataService>();
-            await seeder.SeedAllAsync();
+            await seeder.SeedFromFixturesAsync();
 
             Console.WriteLine("Data seeding completed.");
         }

@@ -144,12 +144,6 @@ C:\Users\Javier\Documents\OOR\OOR.App\obj\Debug\net9.0\refint\OOR.App.dll
 C:\Users\Javier\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.pdb
 C:\Users\Javier\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.genruntimeconfig.cache
 C:\Users\Javier\Documents\OOR\OOR.App\obj\Debug\net9.0\ref\OOR.App.dll
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.AssemblyReference.cache
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.AssemblyInfoInputs.cache
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.AssemblyInfo.cs
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.CoreCompileInputs.cache
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.sourcelink.json
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.App.exe
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.App.deps.json
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.App.runtimeconfig.json
@@ -284,6 +278,12 @@ C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.Infrastructure.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.Infrastructure.pdb
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.Application.pdb
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.Domain.pdb
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.AssemblyReference.cache
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.AssemblyInfoInputs.cache
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.AssemblyInfo.cs
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.CoreCompileInputs.cache
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.sourcelink.json
 C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.Up2Date
 C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.dll
 C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\refint\OOR.App.dll

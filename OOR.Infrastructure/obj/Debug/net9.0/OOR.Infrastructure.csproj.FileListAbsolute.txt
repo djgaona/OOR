@@ -18,12 +18,6 @@ C:\Users\Javier\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\refint\OOR.Inf
 C:\Users\Javier\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.pdb
 C:\Users\Javier\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.genruntimeconfig.cache
 C:\Users\Javier\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\ref\OOR.Infrastructure.dll
-C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.csproj.AssemblyReference.cache
-C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.AssemblyInfo.cs
-C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.sourcelink.json
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\bin\Debug\net9.0\OOR.Infrastructure.deps.json
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\bin\Debug\net9.0\OOR.Infrastructure.runtimeconfig.json
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\bin\Debug\net9.0\OOR.Infrastructure.dll
@@ -32,6 +26,12 @@ C:\Users\gaona\Documents\OOR\OOR.Infrastructure\bin\Debug\net9.0\OOR.Application
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\bin\Debug\net9.0\OOR.Domain.dll
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\bin\Debug\net9.0\OOR.Application.pdb
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\bin\Debug\net9.0\OOR.Domain.pdb
+C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.AssemblyInfo.cs
+C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.sourcelink.json
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infr.5EE40B0E.Up2Date
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\OOR.Infrastructure.dll
 C:\Users\gaona\Documents\OOR\OOR.Infrastructure\obj\Debug\net9.0\refint\OOR.Infrastructure.dll

@@ -15,7 +15,5 @@ public partial class Period
 
     public string? Description { get; set; }
 
-    public virtual ICollection<Market> Markets { get; set; } = new List<Market>();
-
     public virtual Sport? Sport { get; set; }
 }

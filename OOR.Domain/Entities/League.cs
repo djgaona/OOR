@@ -18,14 +18,15 @@ public partial class League
     public int? Level { get; set; }
 
     public virtual ICollection<Conference> Conferences { get; set; } = new List<Conference>();
-
-    public virtual ICollection<MarketLeagueSportsbook> MarketLeagueSportsbooks { get; set; } = new List<MarketLeagueSportsbook>();
-
+    
     public virtual Region? Region { get; set; }
 
     public virtual Sport? Sport { get; set; }
 
-    public virtual ICollection<TeamsLeague> TeamsLeagues { get; set; } = new List<TeamsLeague>();
+    public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
 
     public virtual ICollection<Tournament> Tournaments { get; set; } = new List<Tournament>();
+    public virtual ICollection<Division> Divisions { get; set; } = new List<Division>();
+
+
 }

@@ -17,5 +17,9 @@ public partial class Sport
 
     public virtual ICollection<Period> Periods { get; set; } = new List<Period>();
 
+    public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
+
+    public virtual ICollection<Tournament> Torunament { get; set; } = new List<Tournament>();
+
     public virtual ICollection<TournamentStage> TournamentStages { get; set; } = new List<TournamentStage>();
 }

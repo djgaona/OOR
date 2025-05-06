@@ -1,6 +1,6 @@
-﻿// Repository.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OOR.Application.Interfaces;
+using OOR.Domain.Entities;
 using OOR.Infrastructure.Context;
 
 namespace OOR.Infrastructure.Repositories
@@ -27,5 +27,30 @@ namespace OOR.Infrastructure.Repositories
 
         public async Task<bool> ExistsAsync(string code) =>
             await _dbSet.AnyAsync(e => EF.Property<string>(e, "Code") == code);
+
+        // ✅ Expose Local DbSet
+        public IQueryable<T> Local => _dbSet.Local.AsQueryable();
+        public async Task<SeasonType?> GetByNameAsync(string name)
+        {
+            return await _context.SeasonTypes.FirstOrDefaultAsync(s => s.Name == name);
+        }
+
+        public async Task<SeasonType> AddAndReturnAsync(SeasonType seasonType)
+        {
+            _context.SeasonTypes.Add(seasonType);
+            await _context.SaveChangesAsync();
+            return seasonType;
+        }
+
+        public async Task<Season?> GetByYearAndTypeAsync(int year, int seasonTypeId)
+        {
+            return await _context.Seasons
+                .FirstOrDefaultAsync(s => s.Year == year && s.SeasonTypeId == seasonTypeId);
+        }
+        public async Task<Venue?> GetByNameAndLocationAsync(string? name, string? location)
+        {
+            return await _context.Venues
+                .FirstOrDefaultAsync(v => v.Name == name && v.Location == location);
+        }
     }
 }

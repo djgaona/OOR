@@ -24,7 +24,7 @@ namespace OOR.Application.Interfaces
         /// <summary>
         /// Returns raw JSON for fixtures, filtered by sport codes.
         /// </summary>
-        Task<string> GetFixturesForSportsRawAsync(IEnumerable<string> sportCodes);
+        Task<string> GetFixturesForSportsRawAsync(IEnumerable<string> sportCodes, int page);
 
         /// <summary>
         /// Returns raw JSON for tournaments, filtered by sport codes.
@@ -42,6 +42,21 @@ namespace OOR.Application.Interfaces
         Task<string> GetDivisionsForSportsRawAsync(IEnumerable<string> sportCodes);
 
         /// <summary>
+        /// Returns raw JSON for tournaments filtered by league.
+        /// </summary>
+        Task<string> GetTournamentsForLeagueRawAsync(string leagueCode);
+
+        /// <summary>
+        /// Returns raw JSON for conferences filtered by league.
+        /// </summary>
+        Task<string> GetConferencesForLeagueRawAsync(string leagueCode);
+
+        /// <summary>
+        /// Returns raw JSON for divisions filtered by league.
+        /// </summary>
+        Task<string> GetDivisionsForLeagueRawAsync(string leagueCode);
+
+        /// <summary>
         /// Returns a list of Market objects (with SportCode set) for the given sport codes.
         /// Each Market's code, name, and description are populated from the API.
         /// </summary>
@@ -50,21 +65,21 @@ namespace OOR.Application.Interfaces
         /// <summary>
         /// Returns a list of MarketLeagueSportsbookDto representing relationships from the API.
         /// </summary>
-        Task<IEnumerable<MarketLeagueSportsbookDto>> GetMarketLeagueSportsbookRelationshipsAsync(IEnumerable<string> sportCodes);
+        Task<IEnumerable<Sportsbook>?> GetSportsbooksAsync();
+        Task<string> GetTournamentsForSportRawAsync(string sportCode);
+
+        Task<string> GetTeamsForSportRawAsync(string sportCode, int page);
+        Task<string> GetPlayersForSportRawAsync(string sportCode, int page);
+        /// <summary>
+        /// Gets a single player by ID from the OpticOdds API.
+        /// </summary>
+        Task<Player?> GetPlayerByIdAsync(string playerId);
 
         /// <summary>
-        /// Returns a list of Sportsbook objects from the API (with Code, Name, etc.).
+        /// Gets a single team by ID from the OpticOdds API.
         /// </summary>
-        Task<IEnumerable<Sportsbook>?> GetSportsbooksAsync();
-    }
+        Task<Team?> GetTeamByIdAsync(string teamId);
 
-    /// <summary>
-    /// DTO capturing relationships between Market, League, and Sportsbook codes from the API.
-    /// </summary>
-    public class MarketLeagueSportsbookDto
-    {
-        public string MarketCode { get; set; } = string.Empty;
-        public string LeagueCode { get; set; } = string.Empty;
-        public string SportsbookCode { get; set; } = string.Empty;
+
     }
 }

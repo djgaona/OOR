@@ -12,7 +12,7 @@ using OOR.Infrastructure.Context;
 namespace OOR.Infrastructure.Migrations
 {
     [DbContext(typeof(OddsContext))]
-    [Migration("20250505001551_initial")]
+    [Migration("20250506060807_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -25,19 +25,95 @@ namespace OOR.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BroadcastFixture", b =>
+            modelBuilder.Entity("Fixture", b =>
                 {
-                    b.Property<int>("BroadcastsId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    b.Property<int>("FixturesId")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AwayScoreTotal")
                         .HasColumnType("integer");
 
-                    b.HasKey("BroadcastsId", "FixturesId");
+                    b.Property<int?>("AwayTeamId")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("FixturesId");
+                    b.Property<int?>("BroadcastId")
+                        .HasColumnType("integer");
 
-                    b.ToTable("BroadcastFixture");
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<int?>("HomeScoreTotal")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("HomeTeamId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsLive")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("PeriodStatus")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("SeasonId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SportId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("StatusId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("TournamentId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("TournamentStageId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("VenueId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("WeatherConditionId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AwayTeamId");
+
+                    b.HasIndex("BroadcastId");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("HomeTeamId");
+
+                    b.HasIndex("LeagueId");
+
+                    b.HasIndex("SeasonId");
+
+                    b.HasIndex("SportId");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("TournamentId");
+
+                    b.HasIndex("TournamentStageId");
+
+                    b.HasIndex("VenueId");
+
+                    b.HasIndex("WeatherConditionId");
+
+                    b.ToTable("Fixtures");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.BaseballBattingStat", b =>
@@ -278,31 +354,6 @@ namespace OOR.Infrastructure.Migrations
                     b.ToTable("Broadcasts");
                 });
 
-            modelBuilder.Entity("OOR.Domain.Entities.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
-
-                    b.Property<int?>("RegionId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("State")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RegionId");
-
-                    b.ToTable("Citys");
-                });
-
             modelBuilder.Entity("OOR.Domain.Entities.Conference", b =>
                 {
                     b.Property<int>("Id")
@@ -349,6 +400,9 @@ namespace OOR.Infrastructure.Migrations
                     b.Property<int?>("ConferenceId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("LeagueId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
@@ -360,10 +414,12 @@ namespace OOR.Infrastructure.Migrations
 
                     b.HasIndex("ConferenceId");
 
+                    b.HasIndex("LeagueId");
+
                     b.ToTable("Divisions");
                 });
 
-            modelBuilder.Entity("OOR.Domain.Entities.Fixture", b =>
+            modelBuilder.Entity("OOR.Domain.Entities.FixturePeriodScore", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -371,83 +427,25 @@ namespace OOR.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<bool?>("IsLive")
-                        .HasColumnType("boolean");
-
-                    b.Property<int?>("NumericalId")
+                    b.Property<int>("FixtureId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("SeasonId")
+                    b.Property<int>("PeriodId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("StartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int?>("StatusId")
+                    b.Property<int>("Score")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("TournamentId")
+                    b.Property<int>("TeamId")
                         .HasColumnType("integer");
-
-                    b.Property<int?>("TournamentStageId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("VenueId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("WeatherId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.HasIndex("SeasonId");
-
-                    b.HasIndex("StatusId");
-
-                    b.HasIndex("TournamentId");
-
-                    b.HasIndex("TournamentStageId");
-
-                    b.HasIndex("VenueId");
-
-                    b.HasIndex("WeatherId");
-
-                    b.ToTable("Fixtures");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.FixtureSource", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int?>("FixtureId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("SourceId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("SourceSystem")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FixtureId");
 
-                    b.ToTable("FixtureSources");
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("FixturePeriodScores");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.Future", b =>
@@ -583,9 +581,6 @@ namespace OOR.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("FixtureId", "SelectionId");
-
-                    b.HasIndex("FixtureId")
-                        .IsUnique();
 
                     b.HasIndex("SelectionId");
 
@@ -763,9 +758,6 @@ namespace OOR.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
-                    b.Property<int?>("PeriodId")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("SportId")
                         .HasColumnType("integer");
 
@@ -774,31 +766,9 @@ namespace OOR.Infrastructure.Migrations
                     b.HasIndex("Code")
                         .IsUnique();
 
-                    b.HasIndex("PeriodId");
-
                     b.HasIndex("SportId");
 
                     b.ToTable("Markets");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.MarketLeagueSportsbook", b =>
-                {
-                    b.Property<int>("MarketId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("SportsbookId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("MarketId", "LeagueId", "SportsbookId");
-
-                    b.HasIndex("LeagueId");
-
-                    b.HasIndex("SportsbookId");
-
-                    b.ToTable("MarketLeagueSportsbooks");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.Odd", b =>
@@ -1037,11 +1007,11 @@ namespace OOR.Infrastructure.Migrations
                     b.Property<int?>("SeasonTypeId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Week")
-                        .HasColumnType("text");
+                    b.Property<int?>("Week")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("Year")
-                        .HasColumnType("text");
+                    b.Property<int?>("Year")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -1334,6 +1304,9 @@ namespace OOR.Infrastructure.Migrations
                     b.Property<int?>("DivisionId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("LogoUrl")
                         .HasColumnType("text");
 
@@ -1341,91 +1314,21 @@ namespace OOR.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
-                    b.HasKey("Id");
+                    b.Property<int>("SportId")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("CityId");
+                    b.HasKey("Id");
 
                     b.HasIndex("Code")
                         .IsUnique();
 
                     b.HasIndex("DivisionId");
 
-                    b.ToTable("Teams");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.TeamFixtureDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("FixtureId")
-                        .HasColumnType("integer");
-
-                    b.Property<bool?>("IsHome")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Record")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("RotationNumber")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Seed")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Starter")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("TeamId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FixtureId");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("TeamFixtureDetails");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.TeamsLeague", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<bool?>("Active")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int?>("LeagueId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("SeasonId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("TeamId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
                     b.HasIndex("LeagueId");
 
-                    b.HasIndex("SeasonId");
+                    b.HasIndex("SportId");
 
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("TeamsLeagues");
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.TennisPlayerStat", b =>
@@ -1552,6 +1455,9 @@ namespace OOR.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
+                    b.Property<int?>("SportId")
+                        .HasColumnType("integer");
+
                     b.Property<DateOnly?>("StartDate")
                         .HasColumnType("date");
 
@@ -1561,6 +1467,8 @@ namespace OOR.Infrastructure.Migrations
                         .IsUnique();
 
                     b.HasIndex("LeagueId");
+
+                    b.HasIndex("SportId");
 
                     b.ToTable("Tournaments");
                 });
@@ -1603,27 +1511,17 @@ namespace OOR.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CityId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
                     b.Property<bool?>("IsNeutral")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.HasIndex("Code")
-                        .IsUnique();
 
                     b.ToTable("Venues");
                 });
@@ -1655,25 +1553,75 @@ namespace OOR.Infrastructure.Migrations
                     b.ToTable("WeatherConditions");
                 });
 
-            modelBuilder.Entity("BroadcastFixture", b =>
+            modelBuilder.Entity("Fixture", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Broadcast", null)
+                    b.HasOne("OOR.Domain.Entities.Team", "AwayTeam")
                         .WithMany()
-                        .HasForeignKey("BroadcastsId")
+                        .HasForeignKey("AwayTeamId");
+
+                    b.HasOne("OOR.Domain.Entities.Broadcast", null)
+                        .WithMany("Fixtures")
+                        .HasForeignKey("BroadcastId");
+
+                    b.HasOne("OOR.Domain.Entities.Team", "HomeTeam")
+                        .WithMany()
+                        .HasForeignKey("HomeTeamId");
+
+                    b.HasOne("OOR.Domain.Entities.League", "League")
+                        .WithMany()
+                        .HasForeignKey("LeagueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OOR.Domain.Entities.Fixture", null)
+                    b.HasOne("OOR.Domain.Entities.Season", "Season")
+                        .WithMany("Fixtures")
+                        .HasForeignKey("SeasonId");
+
+                    b.HasOne("OOR.Domain.Entities.Sport", "Sport")
                         .WithMany()
-                        .HasForeignKey("FixturesId")
+                        .HasForeignKey("SportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("OOR.Domain.Entities.Status", null)
+                        .WithMany("Fixtures")
+                        .HasForeignKey("StatusId");
+
+                    b.HasOne("OOR.Domain.Entities.Tournament", "Tournament")
+                        .WithMany("Fixtures")
+                        .HasForeignKey("TournamentId");
+
+                    b.HasOne("OOR.Domain.Entities.TournamentStage", null)
+                        .WithMany("Fixtures")
+                        .HasForeignKey("TournamentStageId");
+
+                    b.HasOne("OOR.Domain.Entities.Venue", "Venue")
+                        .WithMany("Fixtures")
+                        .HasForeignKey("VenueId");
+
+                    b.HasOne("OOR.Domain.Entities.WeatherCondition", null)
+                        .WithMany("Fixtures")
+                        .HasForeignKey("WeatherConditionId");
+
+                    b.Navigation("AwayTeam");
+
+                    b.Navigation("HomeTeam");
+
+                    b.Navigation("League");
+
+                    b.Navigation("Season");
+
+                    b.Navigation("Sport");
+
+                    b.Navigation("Tournament");
+
+                    b.Navigation("Venue");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.BaseballBattingStat", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("BaseballBattingStats")
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany()
                         .HasForeignKey("FixtureId");
 
                     b.HasOne("OOR.Domain.Entities.Player", "Player")
@@ -1687,8 +1635,8 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.BaseballPitchingStat", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("BaseballPitchingStats")
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany()
                         .HasForeignKey("FixtureId");
 
                     b.HasOne("OOR.Domain.Entities.Player", "Player")
@@ -1698,15 +1646,6 @@ namespace OOR.Infrastructure.Migrations
                     b.Navigation("Fixture");
 
                     b.Navigation("Player");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.City", b =>
-                {
-                    b.HasOne("OOR.Domain.Entities.Region", "Region")
-                        .WithMany("Cities")
-                        .HasForeignKey("RegionId");
-
-                    b.Navigation("Region");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.Conference", b =>
@@ -1720,59 +1659,34 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.Division", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Conference", "Conference")
+                    b.HasOne("OOR.Domain.Entities.Conference", null)
                         .WithMany("Divisions")
                         .HasForeignKey("ConferenceId");
 
-                    b.Navigation("Conference");
+                    b.HasOne("OOR.Domain.Entities.League", "League")
+                        .WithMany("Divisions")
+                        .HasForeignKey("LeagueId");
+
+                    b.Navigation("League");
                 });
 
-            modelBuilder.Entity("OOR.Domain.Entities.Fixture", b =>
+            modelBuilder.Entity("OOR.Domain.Entities.FixturePeriodScore", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Season", "Season")
-                        .WithMany("Fixtures")
-                        .HasForeignKey("SeasonId");
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany("PeriodScores")
+                        .HasForeignKey("FixtureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("OOR.Domain.Entities.Status", "Status")
-                        .WithMany("Fixtures")
-                        .HasForeignKey("StatusId");
-
-                    b.HasOne("OOR.Domain.Entities.Tournament", "Tournament")
-                        .WithMany("Fixtures")
-                        .HasForeignKey("TournamentId");
-
-                    b.HasOne("OOR.Domain.Entities.TournamentStage", "TournamentStage")
-                        .WithMany("Fixtures")
-                        .HasForeignKey("TournamentStageId");
-
-                    b.HasOne("OOR.Domain.Entities.Venue", "Venue")
-                        .WithMany("Fixtures")
-                        .HasForeignKey("VenueId");
-
-                    b.HasOne("OOR.Domain.Entities.WeatherCondition", "Weather")
-                        .WithMany("Fixtures")
-                        .HasForeignKey("WeatherId");
-
-                    b.Navigation("Season");
-
-                    b.Navigation("Status");
-
-                    b.Navigation("Tournament");
-
-                    b.Navigation("TournamentStage");
-
-                    b.Navigation("Venue");
-
-                    b.Navigation("Weather");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.FixtureSource", b =>
-                {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("FixtureSources")
-                        .HasForeignKey("FixtureId");
+                    b.HasOne("OOR.Domain.Entities.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Fixture");
+
+                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.Future", b =>
@@ -1819,9 +1733,9 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.GraderOdd", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithOne("GraderOdd")
-                        .HasForeignKey("OOR.Domain.Entities.GraderOdd", "FixtureId")
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany()
+                        .HasForeignKey("FixtureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1844,8 +1758,8 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.HistoricalOdd", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("HistoricalOdds")
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany()
                         .HasForeignKey("FixtureId");
 
                     b.HasOne("OOR.Domain.Entities.Selection", "Selection")
@@ -1895,10 +1809,6 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.Market", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Period", null)
-                        .WithMany("Markets")
-                        .HasForeignKey("PeriodId");
-
                     b.HasOne("OOR.Domain.Entities.Sport", "Sport")
                         .WithMany("Markets")
                         .HasForeignKey("SportId");
@@ -1906,37 +1816,10 @@ namespace OOR.Infrastructure.Migrations
                     b.Navigation("Sport");
                 });
 
-            modelBuilder.Entity("OOR.Domain.Entities.MarketLeagueSportsbook", b =>
-                {
-                    b.HasOne("OOR.Domain.Entities.League", "League")
-                        .WithMany("MarketLeagueSportsbooks")
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OOR.Domain.Entities.Market", "Market")
-                        .WithMany("MarketLeagueSportsbooks")
-                        .HasForeignKey("MarketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OOR.Domain.Entities.Sportsbook", "Sportsbook")
-                        .WithMany("MarketLeagueSportsbooks")
-                        .HasForeignKey("SportsbookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("League");
-
-                    b.Navigation("Market");
-
-                    b.Navigation("Sportsbook");
-                });
-
             modelBuilder.Entity("OOR.Domain.Entities.Odd", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("Odds")
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany()
                         .HasForeignKey("FixtureId");
 
                     b.HasOne("OOR.Domain.Entities.Selection", "Selection")
@@ -1991,8 +1874,8 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.Result", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("Results")
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany()
                         .HasForeignKey("FixtureId");
 
                     b.HasOne("OOR.Domain.Entities.Status", "Status")
@@ -2053,8 +1936,8 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.SoccerPlayerStat", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("SoccerPlayerStats")
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany()
                         .HasForeignKey("FixtureId");
 
                     b.HasOne("OOR.Domain.Entities.Player", "Player")
@@ -2068,59 +1951,33 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.Team", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.City", "City")
-                        .WithMany("Teams")
-                        .HasForeignKey("CityId");
-
                     b.HasOne("OOR.Domain.Entities.Division", "Division")
                         .WithMany("Teams")
                         .HasForeignKey("DivisionId");
 
-                    b.Navigation("City");
+                    b.HasOne("OOR.Domain.Entities.League", "League")
+                        .WithMany("Teams")
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OOR.Domain.Entities.Sport", "Sport")
+                        .WithMany("Teams")
+                        .HasForeignKey("SportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Division");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.TeamFixtureDetail", b =>
-                {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("TeamFixtureDetails")
-                        .HasForeignKey("FixtureId");
-
-                    b.HasOne("OOR.Domain.Entities.Team", "Team")
-                        .WithMany("TeamFixtureDetails")
-                        .HasForeignKey("TeamId");
-
-                    b.Navigation("Fixture");
-
-                    b.Navigation("Team");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.TeamsLeague", b =>
-                {
-                    b.HasOne("OOR.Domain.Entities.League", "League")
-                        .WithMany("TeamsLeagues")
-                        .HasForeignKey("LeagueId");
-
-                    b.HasOne("OOR.Domain.Entities.Season", "Season")
-                        .WithMany("TeamsLeagues")
-                        .HasForeignKey("SeasonId");
-
-                    b.HasOne("OOR.Domain.Entities.Team", "Team")
-                        .WithMany("TeamsLeagues")
-                        .HasForeignKey("TeamId");
 
                     b.Navigation("League");
 
-                    b.Navigation("Season");
-
-                    b.Navigation("Team");
+                    b.Navigation("Sport");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.TennisPlayerStat", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.Fixture", "Fixture")
-                        .WithMany("TennisPlayerStats")
+                    b.HasOne("Fixture", "Fixture")
+                        .WithMany()
                         .HasForeignKey("FixtureId");
 
                     b.HasOne("OOR.Domain.Entities.Player", "Player")
@@ -2134,11 +1991,15 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.Tournament", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.League", "League")
+                    b.HasOne("OOR.Domain.Entities.League", null)
                         .WithMany("Tournaments")
                         .HasForeignKey("LeagueId");
 
-                    b.Navigation("League");
+                    b.HasOne("OOR.Domain.Entities.Sport", "Sport")
+                        .WithMany("Torunament")
+                        .HasForeignKey("SportId");
+
+                    b.Navigation("Sport");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.TournamentStage", b =>
@@ -2150,20 +2011,14 @@ namespace OOR.Infrastructure.Migrations
                     b.Navigation("Sport");
                 });
 
-            modelBuilder.Entity("OOR.Domain.Entities.Venue", b =>
+            modelBuilder.Entity("Fixture", b =>
                 {
-                    b.HasOne("OOR.Domain.Entities.City", "City")
-                        .WithMany("Venues")
-                        .HasForeignKey("CityId");
-
-                    b.Navigation("City");
+                    b.Navigation("PeriodScores");
                 });
 
-            modelBuilder.Entity("OOR.Domain.Entities.City", b =>
+            modelBuilder.Entity("OOR.Domain.Entities.Broadcast", b =>
                 {
-                    b.Navigation("Teams");
-
-                    b.Navigation("Venues");
+                    b.Navigation("Fixtures");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.Conference", b =>
@@ -2176,29 +2031,6 @@ namespace OOR.Infrastructure.Migrations
                     b.Navigation("Teams");
                 });
 
-            modelBuilder.Entity("OOR.Domain.Entities.Fixture", b =>
-                {
-                    b.Navigation("BaseballBattingStats");
-
-                    b.Navigation("BaseballPitchingStats");
-
-                    b.Navigation("FixtureSources");
-
-                    b.Navigation("GraderOdd");
-
-                    b.Navigation("HistoricalOdds");
-
-                    b.Navigation("Odds");
-
-                    b.Navigation("Results");
-
-                    b.Navigation("SoccerPlayerStats");
-
-                    b.Navigation("TeamFixtureDetails");
-
-                    b.Navigation("TennisPlayerStats");
-                });
-
             modelBuilder.Entity("OOR.Domain.Entities.Future", b =>
                 {
                     b.Navigation("FuturesOdds");
@@ -2208,9 +2040,9 @@ namespace OOR.Infrastructure.Migrations
                 {
                     b.Navigation("Conferences");
 
-                    b.Navigation("MarketLeagueSportsbooks");
+                    b.Navigation("Divisions");
 
-                    b.Navigation("TeamsLeagues");
+                    b.Navigation("Teams");
 
                     b.Navigation("Tournaments");
                 });
@@ -2222,19 +2054,12 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.Market", b =>
                 {
-                    b.Navigation("MarketLeagueSportsbooks");
-
                     b.Navigation("Selections");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.Odd", b =>
                 {
                     b.Navigation("OddsJson");
-                });
-
-            modelBuilder.Entity("OOR.Domain.Entities.Period", b =>
-                {
-                    b.Navigation("Markets");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.Player", b =>
@@ -2254,8 +2079,6 @@ namespace OOR.Infrastructure.Migrations
 
             modelBuilder.Entity("OOR.Domain.Entities.Region", b =>
                 {
-                    b.Navigation("Cities");
-
                     b.Navigation("Leagues");
                 });
 
@@ -2267,8 +2090,6 @@ namespace OOR.Infrastructure.Migrations
             modelBuilder.Entity("OOR.Domain.Entities.Season", b =>
                 {
                     b.Navigation("Fixtures");
-
-                    b.Navigation("TeamsLeagues");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.SeasonType", b =>
@@ -2293,6 +2114,10 @@ namespace OOR.Infrastructure.Migrations
 
                     b.Navigation("Periods");
 
+                    b.Navigation("Teams");
+
+                    b.Navigation("Torunament");
+
                     b.Navigation("TournamentStages");
                 });
 
@@ -2301,8 +2126,6 @@ namespace OOR.Infrastructure.Migrations
                     b.Navigation("FuturesOdds");
 
                     b.Navigation("HistoricalOdds");
-
-                    b.Navigation("MarketLeagueSportsbooks");
 
                     b.Navigation("Odds");
                 });
@@ -2329,10 +2152,6 @@ namespace OOR.Infrastructure.Migrations
                     b.Navigation("Players");
 
                     b.Navigation("Selections");
-
-                    b.Navigation("TeamFixtureDetails");
-
-                    b.Navigation("TeamsLeagues");
                 });
 
             modelBuilder.Entity("OOR.Domain.Entities.Tournament", b =>

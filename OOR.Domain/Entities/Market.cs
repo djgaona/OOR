@@ -16,8 +16,6 @@ public  class Market
     
     public int? SportId { get; set; }
 
-    public virtual ICollection<MarketLeagueSportsbook> MarketLeagueSportsbooks { get; set; } = new List<MarketLeagueSportsbook>();
-
     
     public virtual ICollection<Selection> Selections { get; set; } = new List<Selection>();
 

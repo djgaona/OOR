@@ -115,6 +115,21 @@ namespace OOR.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Venues",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
+                    Location = table.Column<string>(type: "text", nullable: true),
+                    IsNeutral = table.Column<bool>(type: "boolean", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Venues", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "WeatherConditions",
                 columns: table => new
                 {
@@ -130,34 +145,14 @@ namespace OOR.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Citys",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
-                    State = table.Column<string>(type: "text", nullable: true),
-                    RegionId = table.Column<int>(type: "integer", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Citys", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Citys_Regions_RegionId",
-                        column: x => x.RegionId,
-                        principalTable: "Regions",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Seasons",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     SeasonTypeId = table.Column<int>(type: "integer", nullable: true),
-                    Year = table.Column<string>(type: "text", nullable: true),
-                    Week = table.Column<string>(type: "text", nullable: true)
+                    Year = table.Column<int>(type: "integer", nullable: true),
+                    Week = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -191,6 +186,27 @@ namespace OOR.Infrastructure.Migrations
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Leagues_Sports_SportId",
+                        column: x => x.SportId,
+                        principalTable: "Sports",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Markets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    SportId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Markets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Markets_Sports_SportId",
                         column: x => x.SportId,
                         principalTable: "Sports",
                         principalColumn: "Id");
@@ -238,27 +254,6 @@ namespace OOR.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Venues",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
-                    CityId = table.Column<int>(type: "integer", nullable: true),
-                    IsNeutral = table.Column<bool>(type: "boolean", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Venues", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Venues_Citys_CityId",
-                        column: x => x.CityId,
-                        principalTable: "Citys",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Conferences",
                 columns: table => new
                 {
@@ -288,6 +283,7 @@ namespace OOR.Infrastructure.Migrations
                     Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
                     StartDate = table.Column<DateOnly>(type: "date", nullable: true),
                     EndDate = table.Column<DateOnly>(type: "date", nullable: true),
+                    SportId = table.Column<int>(type: "integer", nullable: true),
                     LeagueId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -298,30 +294,8 @@ namespace OOR.Infrastructure.Migrations
                         column: x => x.LeagueId,
                         principalTable: "Leagues",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Markets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    SportId = table.Column<int>(type: "integer", nullable: true),
-                    PeriodId = table.Column<int>(type: "integer", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Markets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Markets_Periods_PeriodId",
-                        column: x => x.PeriodId,
-                        principalTable: "Periods",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Markets_Sports_SportId",
+                        name: "FK_Tournaments_Sports_SportId",
                         column: x => x.SportId,
                         principalTable: "Sports",
                         principalColumn: "Id");
@@ -335,6 +309,7 @@ namespace OOR.Infrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
+                    LeagueId = table.Column<int>(type: "integer", nullable: true),
                     ConferenceId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -345,57 +320,10 @@ namespace OOR.Infrastructure.Migrations
                         column: x => x.ConferenceId,
                         principalTable: "Conferences",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Fixtures",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    NumericalId = table.Column<int>(type: "integer", nullable: true),
-                    StartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: true),
-                    IsLive = table.Column<bool>(type: "boolean", nullable: true),
-                    TournamentId = table.Column<int>(type: "integer", nullable: true),
-                    SeasonId = table.Column<int>(type: "integer", nullable: true),
-                    VenueId = table.Column<int>(type: "integer", nullable: true),
-                    WeatherId = table.Column<int>(type: "integer", nullable: true),
-                    TournamentStageId = table.Column<int>(type: "integer", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Fixtures", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Fixtures_Seasons_SeasonId",
-                        column: x => x.SeasonId,
-                        principalTable: "Seasons",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Fixtures_Statuss_StatusId",
-                        column: x => x.StatusId,
-                        principalTable: "Statuss",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Fixtures_TournamentStages_TournamentStageId",
-                        column: x => x.TournamentStageId,
-                        principalTable: "TournamentStages",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Fixtures_Tournaments_TournamentId",
-                        column: x => x.TournamentId,
-                        principalTable: "Tournaments",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Fixtures_Venues_VenueId",
-                        column: x => x.VenueId,
-                        principalTable: "Venues",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Fixtures_WeatherConditions_WeatherId",
-                        column: x => x.WeatherId,
-                        principalTable: "WeatherConditions",
+                        name: "FK_Divisions_Leagues_LeagueId",
+                        column: x => x.LeagueId,
+                        principalTable: "Leagues",
                         principalColumn: "Id");
                 });
 
@@ -428,42 +356,13 @@ namespace OOR.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MarketLeagueSportsbooks",
-                columns: table => new
-                {
-                    MarketId = table.Column<int>(type: "integer", nullable: false),
-                    LeagueId = table.Column<int>(type: "integer", nullable: false),
-                    SportsbookId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MarketLeagueSportsbooks", x => new { x.MarketId, x.LeagueId, x.SportsbookId });
-                    table.ForeignKey(
-                        name: "FK_MarketLeagueSportsbooks_Leagues_LeagueId",
-                        column: x => x.LeagueId,
-                        principalTable: "Leagues",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MarketLeagueSportsbooks_Markets_MarketId",
-                        column: x => x.MarketId,
-                        principalTable: "Markets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MarketLeagueSportsbooks_Sportsbooks_SportsbookId",
-                        column: x => x.SportsbookId,
-                        principalTable: "Sportsbooks",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Teams",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    SportId = table.Column<int>(type: "integer", nullable: false),
+                    LeagueId = table.Column<int>(type: "integer", nullable: false),
                     Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: true),
                     CityId = table.Column<int>(type: "integer", nullable: true),
@@ -475,86 +374,107 @@ namespace OOR.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Teams", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Teams_Citys_CityId",
-                        column: x => x.CityId,
-                        principalTable: "Citys",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Teams_Divisions_DivisionId",
                         column: x => x.DivisionId,
                         principalTable: "Divisions",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BroadcastFixture",
-                columns: table => new
-                {
-                    BroadcastsId = table.Column<int>(type: "integer", nullable: false),
-                    FixturesId = table.Column<int>(type: "integer", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BroadcastFixture", x => new { x.BroadcastsId, x.FixturesId });
                     table.ForeignKey(
-                        name: "FK_BroadcastFixture_Broadcasts_BroadcastsId",
-                        column: x => x.BroadcastsId,
-                        principalTable: "Broadcasts",
+                        name: "FK_Teams_Leagues_LeagueId",
+                        column: x => x.LeagueId,
+                        principalTable: "Leagues",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BroadcastFixture_Fixtures_FixturesId",
-                        column: x => x.FixturesId,
-                        principalTable: "Fixtures",
+                        name: "FK_Teams_Sports_SportId",
+                        column: x => x.SportId,
+                        principalTable: "Sports",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "FixtureSources",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FixtureId = table.Column<int>(type: "integer", nullable: true),
-                    SourceSystem = table.Column<string>(type: "text", nullable: true),
-                    SourceId = table.Column<string>(type: "text", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FixtureSources", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_FixtureSources_Fixtures_FixtureId",
-                        column: x => x.FixtureId,
-                        principalTable: "Fixtures",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Results",
+                name: "Fixtures",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    FixtureId = table.Column<int>(type: "integer", nullable: true),
-                    HomeScore = table.Column<int>(type: "integer", nullable: true),
-                    AwayScore = table.Column<int>(type: "integer", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: true)
+                    SportId = table.Column<int>(type: "integer", nullable: false),
+                    LeagueId = table.Column<int>(type: "integer", nullable: false),
+                    TournamentId = table.Column<int>(type: "integer", nullable: true),
+                    SeasonId = table.Column<int>(type: "integer", nullable: true),
+                    StatusId = table.Column<int>(type: "integer", nullable: true),
+                    VenueId = table.Column<int>(type: "integer", nullable: true),
+                    IsLive = table.Column<bool>(type: "boolean", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    HomeTeamId = table.Column<int>(type: "integer", nullable: true),
+                    AwayTeamId = table.Column<int>(type: "integer", nullable: true),
+                    HomeScoreTotal = table.Column<int>(type: "integer", nullable: true),
+                    AwayScoreTotal = table.Column<int>(type: "integer", nullable: true),
+                    PeriodStatus = table.Column<string>(type: "text", nullable: true),
+                    BroadcastId = table.Column<int>(type: "integer", nullable: true),
+                    TournamentStageId = table.Column<int>(type: "integer", nullable: true),
+                    WeatherConditionId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Results", x => x.Id);
+                    table.PrimaryKey("PK_Fixtures", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Results_Fixtures_FixtureId",
-                        column: x => x.FixtureId,
-                        principalTable: "Fixtures",
+                        name: "FK_Fixtures_Broadcasts_BroadcastId",
+                        column: x => x.BroadcastId,
+                        principalTable: "Broadcasts",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Results_Statuss_StatusId",
+                        name: "FK_Fixtures_Leagues_LeagueId",
+                        column: x => x.LeagueId,
+                        principalTable: "Leagues",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Fixtures_Seasons_SeasonId",
+                        column: x => x.SeasonId,
+                        principalTable: "Seasons",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Fixtures_Sports_SportId",
+                        column: x => x.SportId,
+                        principalTable: "Sports",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Fixtures_Statuss_StatusId",
                         column: x => x.StatusId,
                         principalTable: "Statuss",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Fixtures_Teams_AwayTeamId",
+                        column: x => x.AwayTeamId,
+                        principalTable: "Teams",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Fixtures_Teams_HomeTeamId",
+                        column: x => x.HomeTeamId,
+                        principalTable: "Teams",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Fixtures_TournamentStages_TournamentStageId",
+                        column: x => x.TournamentStageId,
+                        principalTable: "TournamentStages",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Fixtures_Tournaments_TournamentId",
+                        column: x => x.TournamentId,
+                        principalTable: "Tournaments",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Fixtures_Venues_VenueId",
+                        column: x => x.VenueId,
+                        principalTable: "Venues",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Fixtures_WeatherConditions_WeatherConditionId",
+                        column: x => x.WeatherConditionId,
+                        principalTable: "WeatherConditions",
                         principalColumn: "Id");
                 });
 
@@ -587,83 +507,58 @@ namespace OOR.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TeamFixtureDetails",
+                name: "FixturePeriodScores",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FixtureId = table.Column<int>(type: "integer", nullable: true),
-                    TeamId = table.Column<int>(type: "integer", nullable: true),
-                    IsHome = table.Column<bool>(type: "boolean", nullable: true),
-                    Starter = table.Column<string>(type: "text", nullable: true),
-                    Record = table.Column<string>(type: "text", nullable: true),
-                    Seed = table.Column<string>(type: "text", nullable: true),
-                    RotationNumber = table.Column<int>(type: "integer", nullable: true)
+                    FixtureId = table.Column<int>(type: "integer", nullable: false),
+                    PeriodId = table.Column<int>(type: "integer", nullable: false),
+                    TeamId = table.Column<int>(type: "integer", nullable: false),
+                    Score = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TeamFixtureDetails", x => x.Id);
+                    table.PrimaryKey("PK_FixturePeriodScores", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TeamFixtureDetails_Fixtures_FixtureId",
+                        name: "FK_FixturePeriodScores_Fixtures_FixtureId",
+                        column: x => x.FixtureId,
+                        principalTable: "Fixtures",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FixturePeriodScores_Teams_TeamId",
+                        column: x => x.TeamId,
+                        principalTable: "Teams",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Results",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Code = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    FixtureId = table.Column<int>(type: "integer", nullable: true),
+                    HomeScore = table.Column<int>(type: "integer", nullable: true),
+                    AwayScore = table.Column<int>(type: "integer", nullable: true),
+                    StatusId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Results", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Results_Fixtures_FixtureId",
                         column: x => x.FixtureId,
                         principalTable: "Fixtures",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_TeamFixtureDetails_Teams_TeamId",
-                        column: x => x.TeamId,
-                        principalTable: "Teams",
+                        name: "FK_Results_Statuss_StatusId",
+                        column: x => x.StatusId,
+                        principalTable: "Statuss",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TeamsLeagues",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    TeamId = table.Column<int>(type: "integer", nullable: true),
-                    LeagueId = table.Column<int>(type: "integer", nullable: true),
-                    SeasonId = table.Column<int>(type: "integer", nullable: true),
-                    Active = table.Column<bool>(type: "boolean", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TeamsLeagues", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TeamsLeagues_Leagues_LeagueId",
-                        column: x => x.LeagueId,
-                        principalTable: "Leagues",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_TeamsLeagues_Seasons_SeasonId",
-                        column: x => x.SeasonId,
-                        principalTable: "Seasons",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_TeamsLeagues_Teams_TeamId",
-                        column: x => x.TeamId,
-                        principalTable: "Teams",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ResultsJsons",
-                columns: table => new
-                {
-                    ResultsId = table.Column<int>(type: "integer", nullable: false),
-                    Json = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ResultsJsons", x => x.ResultsId);
-                    table.ForeignKey(
-                        name: "FK_ResultsJsons_Results_ResultsId",
-                        column: x => x.ResultsId,
-                        principalTable: "Results",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -943,6 +838,24 @@ namespace OOR.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ResultsJsons",
+                columns: table => new
+                {
+                    ResultsId = table.Column<int>(type: "integer", nullable: false),
+                    Json = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ResultsJsons", x => x.ResultsId);
+                    table.ForeignKey(
+                        name: "FK_ResultsJsons_Results_ResultsId",
+                        column: x => x.ResultsId,
+                        principalTable: "Results",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FuturesOdds",
                 columns: table => new
                 {
@@ -1136,20 +1049,10 @@ namespace OOR.Infrastructure.Migrations
                 column: "PlayerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BroadcastFixture_FixturesId",
-                table: "BroadcastFixture",
-                column: "FixturesId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Broadcasts_Code",
                 table: "Broadcasts",
                 column: "Code",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Citys_RegionId",
-                table: "Citys",
-                column: "RegionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Conferences_Code",
@@ -1174,15 +1077,55 @@ namespace OOR.Infrastructure.Migrations
                 column: "ConferenceId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Divisions_LeagueId",
+                table: "Divisions",
+                column: "LeagueId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FixturePeriodScores_FixtureId",
+                table: "FixturePeriodScores",
+                column: "FixtureId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FixturePeriodScores_TeamId",
+                table: "FixturePeriodScores",
+                column: "TeamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Fixtures_AwayTeamId",
+                table: "Fixtures",
+                column: "AwayTeamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Fixtures_BroadcastId",
+                table: "Fixtures",
+                column: "BroadcastId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Fixtures_Code",
                 table: "Fixtures",
                 column: "Code",
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Fixtures_HomeTeamId",
+                table: "Fixtures",
+                column: "HomeTeamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Fixtures_LeagueId",
+                table: "Fixtures",
+                column: "LeagueId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Fixtures_SeasonId",
                 table: "Fixtures",
                 column: "SeasonId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Fixtures_SportId",
+                table: "Fixtures",
+                column: "SportId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Fixtures_StatusId",
@@ -1205,14 +1148,9 @@ namespace OOR.Infrastructure.Migrations
                 column: "VenueId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fixtures_WeatherId",
+                name: "IX_Fixtures_WeatherConditionId",
                 table: "Fixtures",
-                column: "WeatherId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FixtureSources_FixtureId",
-                table: "FixtureSources",
-                column: "FixtureId");
+                column: "WeatherConditionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Futures_Code",
@@ -1255,12 +1193,6 @@ namespace OOR.Infrastructure.Migrations
                 name: "IX_FuturesOdds_TeamId",
                 table: "FuturesOdds",
                 column: "TeamId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_GraderOdds_FixtureId",
-                table: "GraderOdds",
-                column: "FixtureId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_GraderOdds_SelectionId",
@@ -1326,25 +1258,10 @@ namespace OOR.Infrastructure.Migrations
                 column: "SportId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MarketLeagueSportsbooks_LeagueId",
-                table: "MarketLeagueSportsbooks",
-                column: "LeagueId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MarketLeagueSportsbooks_SportsbookId",
-                table: "MarketLeagueSportsbooks",
-                column: "SportsbookId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Markets_Code",
                 table: "Markets",
                 column: "Code",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Markets_PeriodId",
-                table: "Markets",
-                column: "PeriodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Markets_SportId",
@@ -1475,21 +1392,6 @@ namespace OOR.Infrastructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_TeamFixtureDetails_FixtureId",
-                table: "TeamFixtureDetails",
-                column: "FixtureId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TeamFixtureDetails_TeamId",
-                table: "TeamFixtureDetails",
-                column: "TeamId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Teams_CityId",
-                table: "Teams",
-                column: "CityId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Teams_Code",
                 table: "Teams",
                 column: "Code",
@@ -1501,19 +1403,14 @@ namespace OOR.Infrastructure.Migrations
                 column: "DivisionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TeamsLeagues_LeagueId",
-                table: "TeamsLeagues",
+                name: "IX_Teams_LeagueId",
+                table: "Teams",
                 column: "LeagueId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TeamsLeagues_SeasonId",
-                table: "TeamsLeagues",
-                column: "SeasonId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TeamsLeagues_TeamId",
-                table: "TeamsLeagues",
-                column: "TeamId");
+                name: "IX_Teams_SportId",
+                table: "Teams",
+                column: "SportId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TennisPlayerStats_FixtureId",
@@ -1537,6 +1434,11 @@ namespace OOR.Infrastructure.Migrations
                 column: "LeagueId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tournaments_SportId",
+                table: "Tournaments",
+                column: "SportId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TournamentStages_Code",
                 table: "TournamentStages",
                 column: "Code",
@@ -1546,17 +1448,6 @@ namespace OOR.Infrastructure.Migrations
                 name: "IX_TournamentStages_SportId",
                 table: "TournamentStages",
                 column: "SportId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Venues_CityId",
-                table: "Venues",
-                column: "CityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Venues_Code",
-                table: "Venues",
-                column: "Code",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_WeatherConditions_Code",
@@ -1575,10 +1466,7 @@ namespace OOR.Infrastructure.Migrations
                 name: "BaseballPitchingStats");
 
             migrationBuilder.DropTable(
-                name: "BroadcastFixture");
-
-            migrationBuilder.DropTable(
-                name: "FixtureSources");
+                name: "FixturePeriodScores");
 
             migrationBuilder.DropTable(
                 name: "FuturesOdds");
@@ -1593,10 +1481,10 @@ namespace OOR.Infrastructure.Migrations
                 name: "Injurys");
 
             migrationBuilder.DropTable(
-                name: "MarketLeagueSportsbooks");
+                name: "OddsJsons");
 
             migrationBuilder.DropTable(
-                name: "OddsJsons");
+                name: "Periods");
 
             migrationBuilder.DropTable(
                 name: "ResultsJsons");
@@ -1605,16 +1493,7 @@ namespace OOR.Infrastructure.Migrations
                 name: "SoccerPlayerStats");
 
             migrationBuilder.DropTable(
-                name: "TeamFixtureDetails");
-
-            migrationBuilder.DropTable(
-                name: "TeamsLeagues");
-
-            migrationBuilder.DropTable(
                 name: "TennisPlayerStats");
-
-            migrationBuilder.DropTable(
-                name: "Broadcasts");
 
             migrationBuilder.DropTable(
                 name: "Futures");
@@ -1644,6 +1523,9 @@ namespace OOR.Infrastructure.Migrations
                 name: "Players");
 
             migrationBuilder.DropTable(
+                name: "Broadcasts");
+
+            migrationBuilder.DropTable(
                 name: "Seasons");
 
             migrationBuilder.DropTable(
@@ -1659,9 +1541,6 @@ namespace OOR.Infrastructure.Migrations
                 name: "WeatherConditions");
 
             migrationBuilder.DropTable(
-                name: "Periods");
-
-            migrationBuilder.DropTable(
                 name: "Statuss");
 
             migrationBuilder.DropTable(
@@ -1669,9 +1548,6 @@ namespace OOR.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "SeasonTypes");
-
-            migrationBuilder.DropTable(
-                name: "Citys");
 
             migrationBuilder.DropTable(
                 name: "Divisions");
