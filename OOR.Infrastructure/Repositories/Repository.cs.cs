@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using OOR.Application.Interfaces;
 using OOR.Domain.Entities;
 using OOR.Infrastructure.Context;
@@ -51,6 +52,28 @@ namespace OOR.Infrastructure.Repositories
         {
             return await _context.Venues
                 .FirstOrDefaultAsync(v => v.Name == name && v.Location == location);
+        }
+
+        public Task RemoveAsync(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+            return Task.CompletedTask;
+        }
+
+        public Task RemoveRangeAsync(IEnumerable<T> entities)
+        {
+            _context.Set<T>().RemoveRange(entities);
+            return Task.CompletedTask;
+        }
+
+        public async Task<LineType?> GetLineTypeByNameAsync(string typeName)
+        {
+            return await _context.LineTypes.FirstOrDefaultAsync(lt => lt.Name == typeName);
+        }
+
+        public async Task<T?> FindAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.FirstOrDefaultAsync(predicate);
         }
     }
 }

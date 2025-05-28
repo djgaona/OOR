@@ -18,10 +18,6 @@ namespace OOR.Infrastructure.Services
         public HttpClientOpticOddsApiClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri("https://api.opticodds.com/api/v3/");
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.DefaultRequestHeaders.Add("X-Api-Key", "1183340c-d160-4f77-9447-90416c7ff363");
         }
 
         public async Task<string> GetLeaguesForSportsRawAsync(IEnumerable<string> sportCodes)
@@ -54,7 +50,7 @@ namespace OOR.Infrastructure.Services
         public async Task<string> GetFixturesForSportsRawAsync(IEnumerable<string> sportCodes, int page)
         {
             var query = string.Join("&", sportCodes.Select(s => $"sport={s}"));
-            var requestUrl = $"fixtures?{query}&page={page}";
+            var requestUrl = $"fixtures?{query}&status=live&page={page}";
             var response = await _httpClient.GetAsync(requestUrl);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
@@ -169,28 +165,24 @@ namespace OOR.Infrastructure.Services
 
         public async Task<string> GetTournamentsForSportRawAsync(string sportCode)
         {
-            var url = $"https://api.opticodds.com/api/v3/tournaments?sport={sportCode}";
+            var url = $"tournaments?sport={sportCode}";
             var response = await _httpClient.GetAsync(url);
-
             response.EnsureSuccessStatusCode();
-
             return await response.Content.ReadAsStringAsync();
         }
 
         public async Task<string> GetTeamsForSportRawAsync(string sportCode, int page)
         {
-            var url = $"https://api.opticodds.com/api/v3/teams?sport={sportCode}&page={page}";
+            var url = $"teams?sport={sportCode}&page={page}";
             var response = await _httpClient.GetAsync(url);
-
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         public async Task<string> GetPlayersForSportRawAsync(string sportCode, int page)
         {
-            var url = $"https://api.opticodds.com/api/v3/players?sport={sportCode}&page={page}";
+            var url = $"players?sport={sportCode}&page={page}";
             var response = await _httpClient.GetAsync(url);
-
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
@@ -210,8 +202,8 @@ namespace OOR.Infrastructure.Services
                 Position = data["position"]?.ToString(),
                 Number = data["number"]?.ToObject<int?>(),
                 Team = data["team"]?["id"] != null ? new Team { Code = data["team"]?["id"]?.ToString() } : null,
-                TeamId = null, // You may resolve this with lookup if necessary
-                StatusId = null // Not available in API
+                TeamId = null,
+                StatusId = null
             };
         }
 
@@ -231,7 +223,24 @@ namespace OOR.Infrastructure.Services
                 LogoUrl = data["logo"]?.ToString(),
                 Sport = data["sport"]?["id"] != null ? new Sport { Code = data["sport"]?["id"]?.ToString() } : null,
                 League = data["league"]?["id"] != null ? new League { Code = data["league"]?["id"]?.ToString() } : null,
- };
+            };
         }
+        
+        public async Task<JToken?> GetOddsByFixtureAndSportsbookAsync(string fixtureCode, IEnumerable<string> sportsbookCodes, CancellationToken cancellationToken)
+        {
+            var query = string.Join("&", sportsbookCodes.Select(s => $"sportsbook={Uri.EscapeDataString(s)}"));
+            var url = $"fixtures/odds?{query}&fixture_id={Uri.EscapeDataString(fixtureCode)}";
+
+            var response = await _httpClient.GetAsync(url, cancellationToken);
+            if (!response.IsSuccessStatusCode) return null;
+
+            var json = await response.Content.ReadAsStringAsync(cancellationToken);
+            return JToken.Parse(json);
+        }
+        public async Task<HttpResponseMessage> GetRawAsync(string url, CancellationToken cancellationToken)
+        {
+            return await _httpClient.GetAsync(url, cancellationToken);
+        }
+
     }
 }

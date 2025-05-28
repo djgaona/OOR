@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OOR.Application.Interfaces;
 using OOR.Application.Interfaces.OOR.Application.Interfaces;
@@ -15,7 +16,7 @@ namespace OOR.Infrastructure.DataSeeders
         private readonly IUnitOfWork _unitOfWork;
         private readonly IOpticOddsApiClient _apiClient;
         private readonly ILogger<SeedDataService> _logger;
-        private readonly string[] _sportCodes = new[] {"tennis", "baseball" };
+        private readonly string[] _sportCodes = new[] { "soccer", "baseball", "tennis" };
 
         public SeedDataService(IUnitOfWork unitOfWork, IOpticOddsApiClient apiClient, ILogger<SeedDataService> logger)
         {
@@ -182,8 +183,8 @@ namespace OOR.Infrastructure.DataSeeders
         {
             if (sportCode == "tennis")
             {
-                await EnsureTeamsAsync(fixture["home_competitors"]);
-                await EnsureTeamsAsync(fixture["away_competitors"]);
+                await EnsurePlayersAsync(fixture["home_competitors"]);
+                await EnsurePlayersAsync(fixture["away_competitors"]);
             }
             else
             {
@@ -201,12 +202,19 @@ namespace OOR.Infrastructure.DataSeeders
                 if (string.IsNullOrWhiteSpace(id) || await _unitOfWork.Players.ExistsAsync(id)) continue;
 
                 var playerData = await _apiClient.GetPlayerByIdAsync(id);
-                if (playerData == null) throw new($"Player not found in API: {id}");
+                if (playerData == null)
+                {
+                   await EnsureTeamsAsync(competitors);
+                }
+                else
+                {
+                    await EnsureTeamExists(playerData.Team.Code);
+                    playerData.Team = null;
+                    await _unitOfWork.Players.AddAsync(playerData);
+                    await _unitOfWork.SaveAsync();
+                }
 
-                await EnsureTeamExists(playerData.Team.Code);
-                playerData.Team = null;
-                await _unitOfWork.Players.AddAsync(playerData);
-                await _unitOfWork.SaveAsync();
+                 
             }
         }
 
@@ -342,5 +350,260 @@ namespace OOR.Infrastructure.DataSeeders
 
         private int ParsePeriod(string periodKey) =>
             int.TryParse(periodKey?.Replace("period_", ""), out var num) ? num : 0;
+
+
+        public async Task SeedOddsForFixturesAsync(List<Fixture> fixtures, CancellationToken cancellationToken)
+        {
+            var sportsbooks = await _unitOfWork.Sportsbooks.GetAllAsync();
+            var sportsbookCodes = sportsbooks
+                .Select(sb => sb.Code)
+                .Where(code => !string.IsNullOrWhiteSpace(code))
+                .Distinct()
+                .ToList();
+
+            if (!fixtures.Any() || !sportsbookCodes.Any()) return;
+
+            var fixtureCodes = fixtures.Select(f => f.Code!).ToList();
+
+            var oddsGroupedByFixture = await GetOddsForFixturesInBatchesAsync(fixtureCodes, sportsbookCodes, cancellationToken);
+
+            foreach (var (fixtureCode, oddsArray) in oddsGroupedByFixture)
+            {
+                var fixture = fixtures.FirstOrDefault(f => f.Code == fixtureCode);
+                if (fixture == null || oddsArray == null || !oddsArray.Any()) continue;
+
+                foreach (var oddToken in oddsArray)
+                {
+                    var code = oddToken["id"]?.ToString();
+                    if (string.IsNullOrWhiteSpace(code)) continue;
+
+                    var sportsbookCode = oddToken["sportsbook"]?.ToString();
+                    if (string.IsNullOrWhiteSpace(sportsbookCode)) continue;
+
+                    var sportsbook = sportsbooks.FirstOrDefault(sb => sb.Code == sportsbookCode.ToLower());
+                    if (sportsbook == null) continue;
+
+
+                    var existingOdd = await _unitOfWork.Odds.GetByCodeAsync(code);
+                    if (existingOdd != null) continue;
+
+                    var marketCode = (string?)oddToken["market_id"];
+                    if (string.IsNullOrWhiteSpace(marketCode)) continue;
+
+                    var market = await EnsureMarketAsync(marketCode, cancellationToken);
+                    var selection = await EnsureSelectionAsync(oddToken, market.Id, cancellationToken);
+                    if (selection == null) continue;
+
+                    var price = (decimal?)oddToken["price"];
+                    if (price == null) continue;
+
+                    var limitsToken = oddToken["limits"] as JObject;
+
+                    var odd = new Odd
+                    {
+                        Code = code,
+                        FixtureId = fixture.Id,
+                        SportsbookId = sportsbook.Id,
+                        Timestamp = (decimal?)oddToken["timestamp"],
+                        IsLive = fixture.IsLive,
+                        SelectionId = selection.Id,
+                        Price = price,
+                        MinLimit = (decimal?)limitsToken?["min"],
+                        MaxLimit = (decimal?)limitsToken?["max"],
+                        IsMain = (bool?)oddToken["is_main"],
+                        Locked = (bool?)oddToken["locked"] ?? false,
+                        GroupKey = (string?)oddToken["grouping_key"]
+                    };
+
+                    await _unitOfWork.Odds.AddAsync(odd);
+
+                    await _unitOfWork.OddsJsons.AddAsync(new OddsJson
+                    {
+                        Odds = odd,
+                        Json = oddToken.ToString(Formatting.None)
+                    });
+                }
+
+                await _unitOfWork.SaveAsync();
+            }
+        }
+
+        private async Task<Dictionary<string, JArray>> GetOddsForFixturesInBatchesAsync(List<string> fixtureCodes, List<string> sportsbookCodes, CancellationToken cancellationToken)
+        {
+            const int MaxPerRequest = 5;
+
+            var oddsByFixture = new Dictionary<string, JArray>();
+
+            foreach (var fixtureBatch in fixtureCodes.Chunk(MaxPerRequest))
+            {
+                foreach (var sportsbookBatch in sportsbookCodes.Chunk(MaxPerRequest))
+                {
+                    var fixtureQuery = string.Join("&", fixtureBatch.Select(f => $"fixture_id={Uri.EscapeDataString(f)}"));
+                    var sportsbookQuery = string.Join("&", sportsbookBatch.Select(s => $"sportsbook={Uri.EscapeDataString(s)}"));
+                    var url = $"fixtures/odds?{sportsbookQuery}&{fixtureQuery}";
+
+                    try
+                    {
+                        var response = await _apiClient.GetRawAsync(url, cancellationToken);
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            var body = await response.Content.ReadAsStringAsync(cancellationToken);
+                            throw new HttpRequestException($"Bad response: {(int)response.StatusCode} {response.ReasonPhrase}\nBody: {body}");
+                        }
+
+                        var json = await response.Content.ReadAsStringAsync(cancellationToken);
+                        var token = JToken.Parse(json);
+                        var dataArray = token["data"] as JArray;
+                        if (dataArray == null || !dataArray.Any())
+                        {
+                            _logger.LogWarning("Empty 'data' array returned for url: {Url}", url);
+                            continue;
+                        }
+
+                        foreach (var fixtureObj in dataArray)
+                        {
+                            var fixtureId = fixtureObj["id"]?.ToString();
+                            if (string.IsNullOrWhiteSpace(fixtureId)) continue;
+
+                            var odds = fixtureObj["odds"] as JArray;
+                            if (odds == null || !odds.Any()) continue;
+
+                            if (!oddsByFixture.TryGetValue(fixtureId, out var existingArray))
+                            {
+                                existingArray = new JArray();
+                                oddsByFixture[fixtureId] = existingArray;
+                            }
+
+                            foreach (var odd in odds)
+                                 existingArray.Add(odd);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Failed fetching odds for fixture batch: [{Fixtures}] and sportsbooks: [{Sportsbooks}]",
+                            string.Join(",", fixtureBatch), string.Join(",", sportsbookBatch));
+                        throw;
+                    }
+                }
+            }
+
+            return oddsByFixture;
+        }
+
+
+
+
+
+
+        private async Task<Market> EnsureMarketAsync(string? code, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(code)) throw new ArgumentException("Invalid market code");
+
+            var market = await _unitOfWork.Markets.GetByCodeAsync(code);
+            if (market != null) return market;
+
+            market = new Market { Code = code, Name = code };
+            await _unitOfWork.Markets.AddAsync(market);
+            await _unitOfWork.SaveAsync();
+            return market;
+        }
+
+        private async Task<Selection?> EnsureSelectionAsync(JToken odd, int marketId, CancellationToken cancellationToken)
+        {
+            var teamCode = odd["team_id"]?.ToString();
+            var playerCode = odd["player_id"]?.ToString();
+            var points = (decimal?)odd["points"];
+            var isMain = (bool?)odd["is_main"] ?? false;
+            var selectionLine = (string?)odd["selection_line"];
+
+            int? teamId = null;
+            if (!string.IsNullOrWhiteSpace(teamCode))
+            {
+                var team = await _unitOfWork.Teams.GetByCodeAsync(teamCode);
+                teamId = team?.Id;
+            }
+
+            int? playerId = null;
+            if (!string.IsNullOrWhiteSpace(playerCode))
+            {
+                var player = await _unitOfWork.Players.GetByCodeAsync(playerCode);
+                playerId = player?.Id;
+            }
+
+            var lineType = await EnsureLineTypeAsync(selectionLine, cancellationToken);
+
+            // Check for existing selection with the same unique combination
+            var selection = await _unitOfWork.Selections.FindAsync(s =>
+                s.MarketId == marketId &&
+                (lineType == null ? s.LineTypeId == null : s.LineTypeId == lineType.Id) &&
+                (teamId == null ? s.TeamId == null : s.TeamId == teamId) &&
+                (playerId == null ? s.PlayerId == null : s.PlayerId == playerId));
+
+            if (selection != null)
+                return selection;
+
+            // Create new selection
+            selection = new Selection
+            {
+                MarketId = marketId,
+                LineTypeId = lineType?.Id,
+                TeamId = teamId,
+                PlayerId = playerId,
+                Points = points,
+                IsMain = isMain
+            };
+
+            await _unitOfWork.Selections.AddAsync(selection);
+            await _unitOfWork.SaveAsync();
+            return selection;
+        }
+
+
+        private async Task<LineType?>? EnsureLineTypeAsync(string? name, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return null;
+
+            var lineType = await _unitOfWork.LineTypes.GetLineTypeByNameAsync(name);
+            if (lineType != null)
+                return lineType;
+
+            lineType = new LineType { Name = name };
+            await _unitOfWork.LineTypes.AddAsync(lineType);
+            await _unitOfWork.SaveAsync();
+            return lineType;
+        }
+
+        public async Task EnsureSportsbooksAsync(CancellationToken cancellationToken)
+        {
+            var sportsbooksFromApi = await _apiClient.GetSportsbooksAsync();
+            if (sportsbooksFromApi == null || !sportsbooksFromApi.Any())
+            {
+                _logger.LogWarning("No sportsbooks found from the API.");
+                return;
+            }
+
+            foreach (var apiSb in sportsbooksFromApi)
+            {
+                if (string.IsNullOrWhiteSpace(apiSb.Code))
+                    continue;
+
+                if (await _unitOfWork.Sportsbooks.ExistsAsync(apiSb.Code))
+                    continue;
+
+                var newSb = new Sportsbook
+                {
+                    Code = apiSb.Code,
+                    Name = apiSb.Name,
+                    Website = apiSb.Website,
+                    Active = apiSb.Active ?? true
+                };
+
+                await _unitOfWork.Sportsbooks.AddAsync(newSb);
+            }
+
+            await _unitOfWork.SaveAsync();
+            _logger.LogInformation("Sportsbooks synced from API.");
+        }
     }
 }

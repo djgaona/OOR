@@ -17,7 +17,7 @@ namespace OOR.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.3")
+                .HasAnnotation("ProductVersion", "9.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -732,6 +732,9 @@ namespace OOR.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("LineTypes");
                 });
 
@@ -778,8 +781,8 @@ namespace OOR.Infrastructure.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<int?>("FixtureId")
                         .HasColumnType("integer");
@@ -834,7 +837,7 @@ namespace OOR.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Json")
-                        .HasColumnType("text");
+                        .HasColumnType("jsonb");
 
                     b.HasKey("OddsId");
 
@@ -1067,11 +1070,13 @@ namespace OOR.Infrastructure.Migrations
 
                     b.HasIndex("LineTypeId");
 
-                    b.HasIndex("MarketId");
-
                     b.HasIndex("PlayerId");
 
                     b.HasIndex("TeamId");
+
+                    b.HasIndex("MarketId", "LineTypeId", "TeamId", "PlayerId")
+                        .IsUnique()
+                        .HasFilter("\"TeamId\" IS NOT NULL AND \"PlayerId\" IS NOT NULL AND \"LineTypeId\" IS NOT NULL");
 
                     b.ToTable("Selections");
                 });

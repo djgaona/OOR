@@ -144,6 +144,12 @@ C:\Users\Javier\Documents\OOR\OOR.App\obj\Debug\net9.0\refint\OOR.App.dll
 C:\Users\Javier\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.pdb
 C:\Users\Javier\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.genruntimeconfig.cache
 C:\Users\Javier\Documents\OOR\OOR.App\obj\Debug\net9.0\ref\OOR.App.dll
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.AssemblyReference.cache
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.AssemblyInfoInputs.cache
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.AssemblyInfo.cs
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.CoreCompileInputs.cache
+C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.sourcelink.json
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.App.exe
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.App.deps.json
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.App.runtimeconfig.json
@@ -183,6 +189,7 @@ C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Microsoft.Extensions.FileS
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Microsoft.Extensions.Hosting.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Microsoft.Extensions.Http.dll
+C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Microsoft.Extensions.Http.Polly.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Microsoft.Extensions.Logging.Configuration.dll
@@ -197,6 +204,8 @@ C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Mono.TextTemplating.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Npgsql.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Polly.dll
+C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\Polly.Extensions.Http.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\RestSharp.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\System.CodeDom.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\System.Composition.AttributedModel.dll
@@ -278,12 +287,6 @@ C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.Infrastructure.dll
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.Infrastructure.pdb
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.Application.pdb
 C:\Users\gaona\Documents\OOR\OOR.App\bin\Debug\net9.0\OOR.Domain.pdb
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.AssemblyReference.cache
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.AssemblyInfoInputs.cache
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.AssemblyInfo.cs
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.CoreCompileInputs.cache
-C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.sourcelink.json
 C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.csproj.Up2Date
 C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\OOR.App.dll
 C:\Users\gaona\Documents\OOR\OOR.App\obj\Debug\net9.0\refint\OOR.App.dll

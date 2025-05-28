@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using OOR.Domain.Entities;
 
@@ -196,6 +196,8 @@ public partial class OddsContext : DbContext
             if (entity.Metadata.FindProperty("Name") != null)
             {
                 entity.Property(e => e.Name).HasMaxLength(200);
+                entity.HasIndex(e => e.Name).IsUnique(); // ✅ Enforce uniqueness
+
             }
         });
         modelBuilder.Entity<Market>(entity =>
@@ -220,7 +222,7 @@ public partial class OddsContext : DbContext
 
             if (entity.Metadata.FindProperty("Code") != null)
             {
-                entity.Property(e => e.Code).HasMaxLength(50).IsRequired();
+                entity.Property(e => e.Code).HasMaxLength(200).IsRequired();
                 entity.HasIndex(e => e.Code).IsUnique();
             }
 
@@ -228,7 +230,8 @@ public partial class OddsContext : DbContext
         modelBuilder.Entity<OddsJson>(entity =>
         {
             entity.HasKey(e => e.OddsId);
-
+            entity.Property(e => e.Json)
+                .HasColumnType("jsonb");
             entity.HasOne(e => e.Odds).WithOne(o => o.OddsJson);
 
         });
@@ -315,7 +318,9 @@ public partial class OddsContext : DbContext
         {
             entity.HasKey(e => e.Id);
 
-           
+            entity.HasIndex(e => new { e.MarketId, e.LineTypeId, e.TeamId, e.PlayerId })
+                .IsUnique()
+                .HasFilter("\"TeamId\" IS NOT NULL AND \"PlayerId\" IS NOT NULL AND \"LineTypeId\" IS NOT NULL");
         });
         modelBuilder.Entity<SoccerPlayerStat>(entity =>
         {

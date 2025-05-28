@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using OOR.Domain.Entities;
 
 namespace OOR.Application.Interfaces
@@ -79,7 +80,7 @@ namespace OOR.Application.Interfaces
         /// Gets a single team by ID from the OpticOdds API.
         /// </summary>
         Task<Team?> GetTeamByIdAsync(string teamId);
-
+        Task<HttpResponseMessage> GetRawAsync(string url, CancellationToken cancellationToken);
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Linq.Expressions;
 using OOR.Domain.Entities;
 
 namespace OOR.Application.Interfaces
@@ -16,5 +17,13 @@ namespace OOR.Application.Interfaces
         Task<SeasonType> AddAndReturnAsync(SeasonType seasonType);
         Task<Season?> GetByYearAndTypeAsync(int year, int id);
         Task<Venue?> GetByNameAndLocationAsync(string? name, string? location);
+        Task RemoveAsync(T entity);
+        Task RemoveRangeAsync(IEnumerable<T> entities);
+
+        Task<LineType?> GetLineTypeByNameAsync(string typeName);
+
+        Task<T?> FindAsync(Expression<Func<T, bool>> predicate);
+
+
     }
 }
